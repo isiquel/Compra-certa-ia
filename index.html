@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compra Certa IA</title>
+
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --text: #162033;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --border: #dbe3ef;
+      --shadow: 0 14px 40px rgba(15, 23, 42, .10);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, .16), transparent 32%),
+        radial-gradient(circle at top right, rgba(22, 163, 74, .12), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 18px;
+    }
+
+    .app {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      border-radius: 28px;
+      color: white;
+      padding: 32px 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.10);
+      right: -90px;
+      top: -80px;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.22);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -1.5px;
+    }
+
+    header p {
+      max-width: 760px;
+      color: rgba(255,255,255,.86);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+      padding: 18px;
+    }
+
+    .search-grid {
+      display: grid;
+      grid-template-columns: 1.6fr .75fr .9fr .8fr;
+      gap: 12px;
+      align-items: end;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      color: #334155;
+      margin-bottom: 7px;
+    }
+
+    input, select {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0 14px;
+      font-size: 15px;
+      background: white;
+      outline: none;
+      color: var(--text);
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, .10);
+    }
+
+    .btn {
+      height: 48px;
+      border: 0;
+      border-radius: 14px;
+      padding: 0 16px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .btn.secondary:hover {
+      background: #cbd5e1;
+    }
+
+    .btn.success {
+      background: var(--success);
+    }
+
+    .btn.success:hover {
+      background: #15803d;
+    }
+
+    .btn.danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .btn.danger:hover {
+      background: #fecaca;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .small-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-top: 10px;
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #eff6ff;
+      color: #1e40af;
+      font-weight: 700;
+      display: none;
+    }
+
+    .status.error {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .status.ok {
+      background: #ecfdf5;
+      color: #166534;
+    }
+
+    .summary {
+      display: none;
+      margin-top: 18px;
+      background: linear-gradient(135deg, #ecfdf5, #eff6ff);
+      border: 1px solid #bfdbfe;
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .summary h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .summary p {
+      color: #334155;
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tab {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: white;
+      font-weight: 800;
+      cursor: pointer;
+      color: #334155;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .results-header h2 {
+      font-size: 22px;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      position: relative;
+    }
+
+    .rank-badge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      z-index: 2;
+      background: #0f172a;
+      color: white;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.20);
+    }
+
+    .tag-best {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      z-index: 2;
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .image-box {
+      height: 210px;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .image-box img {
+      max-width: 100%;
+      max-height: 170px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .product-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-title {
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 800;
+      min-height: 64px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .installments {
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      display: grid;
+      gap: 7px;
+      margin: 10px 0 14px;
+      font-size: 13px;
+      color: #475569;
+    }
+
+    .meta span {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 6px;
+    }
+
+    .meta b {
+      color: #0f172a;
+      text-align: right;
+    }
+
+    .score {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 10px;
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 48px;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .heart {
+      height: 48px;
+      border: 0;
+      border-radius: 14px;
+      background: #f1f5f9;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    .heart.active {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .empty {
+      background: white;
+      border: 1px dashed var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    .history-list, .favorite-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .history-item, .favorite-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .history-item button {
+      border: 0;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .favorite-item img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .favorite-info {
+      flex: 1;
+    }
+
+    .favorite-info h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .favorite-info p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .loader {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.45);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 24px 0 8px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 950px) {
+      .search-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 12px;
+      }
+
+      header {
+        padding: 26px 18px;
+        border-radius: 22px;
+      }
+
+      .search-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .history-item, .favorite-item {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .favorite-item {
+        flex-direction: row;
+      }
+
+      .results-header {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="badge">🛒 Comparador inteligente de produtos</div>
+        <h1>Compra Certa IA</h1>
+        <p>
+          Digite o produto que deseja comprar, defina o preço máximo e deixe o aplicativo buscar ofertas online,
+          organizar por preço, popularidade e custo-benefício.
+        </p>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="search-grid">
+        <div>
+          <label for="query">O que você quer comprar?</label>
+          <input id="query" type="text" placeholder="Ex: celular Samsung A15, notebook i5, geladeira..." />
+        </div>
+
+        <div>
+          <label for="maxPrice">Preço máximo</label>
+          <input id="maxPrice" type="number" min="0" placeholder="Ex: 1500" />
+        </div>
+
+        <div>
+          <label for="priority">Prioridade</label>
+          <select id="priority">
+            <option value="beneficio">Melhor custo-benefício</option>
+            <option value="barato">Mais barato</option>
+            <option value="popular">Mais vendido/popular</option>
+            <option value="novo">Somente produtos novos</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="limit">Quantidade</label>
+          <select id="limit">
+            <option value="12">12 produtos</option>
+            <option value="24">24 produtos</option>
+            <option value="36">36 produtos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" onclick="buscarProdutos()" id="searchBtn">🔎 Buscar melhores produtos</button>
+        <button class="btn secondary" onclick="exemploCelular()">📱 Exemplo celular</button>
+        <button class="btn secondary" onclick="limparBusca()">🧹 Limpar</button>
+      </div>
+
+      <p class="small-text">
+        Nesta primeira versão, a busca real é feita no Mercado Livre Brasil. Depois dá para integrar Amazon, Shopee,
+        Magalu, AliExpress e links de afiliado.
+      </p>
+
+      <div id="status" class="status"></div>
+
+      <div id="summary" class="summary">
+        <h2>🤖 Análise da IA</h2>
+        <p id="summaryText"></p>
+      </div>
+    </section>
+
+    <div class="tabs">
+      <button class="tab active" onclick="abrirAba('resultados', this)">Resultados</button>
+      <button class="tab" onclick="abrirAba('favoritos', this)">Favoritos</button>
+      <button class="tab" onclick="abrirAba('historico', this)">Histórico</button>
+      <button class="tab" onclick="abrirAba('config', this)">Configuração</button>
+    </div>
+
+    <section id="resultados" class="content-section active">
+      <div class="results-header">
+        <h2>Produtos encontrados</h2>
+        <div class="count" id="count">Nenhuma busca feita ainda</div>
+      </div>
+
+      <div id="products" class="products"></div>
+
+      <div id="emptyResults" class="empty">
+        Digite um produto acima e clique em buscar para encontrar ofertas.
+      </div>
+    </section>
+
+    <section id="favoritos" class="content-section">
+      <div class="panel">
+        <div class="results-header">
+          <h2>Produtos favoritos</h2>
+          <button class="btn danger" onclick="limparFavoritos()">Limpar favoritos</button>
+        </div>
+        <div id="favoriteList" class="favorite-list"></div>
+      </div>
+    </section>
+
+    <section id="historico" class="content-section">
+      <div class="panel">
+        <div class="results-header">
+          <h2>Histórico de buscas</h2>
+          <button class="btn danger" onclick="limparHistorico()">Limpar histórico</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </div>
+    </section>
+
+    <section id="config" class="content-section">
+      <div class="panel">
+        <h2>Configuração do app</h2>
+        <p class="small-text">
+          Aqui você pode colocar um código de afiliado ou parâmetro de campanha para adicionar no final dos links.
+          Exemplo: <b>?utm_source=compra_certa_ia</b>
+        </p>
+
+        <div style="margin-top:14px;">
+          <label for="affiliateCode">Parâmetro para links</label>
+          <input id="affiliateCode" type="text" placeholder="Ex: ?utm_source=compra_certa_ia" />
+        </div>
+
+        <div class="actions">
+          <button class="btn success" onclick="salvarConfig()">Salvar configuração</button>
+        </div>
+
+        <p class="small-text">
+          Observação: cada loja tem suas próprias regras para afiliados. Em uma versão profissional, o ideal é usar APIs oficiais
+          e links afiliados aprovados por cada plataforma.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      Compra Certa IA — primeira versão funcional para busca de produtos online.
+    </footer>
+  </div>
+
+  <script>
+    const API_BASE = "https://api.mercadolibre.com/sites/MLB/search";
+
+    let produtosAtuais = [];
+    let favoritos = JSON.parse(localStorage.getItem("compraCertaFavoritos") || "[]");
+    let historico = JSON.parse(localStorage.getItem("compraCertaHistorico") || "[]");
+    let config = JSON.parse(localStorage.getItem("compraCertaConfig") || "{}");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("affiliateCode").value = config.affiliateCode || "";
+      renderFavoritos();
+      renderHistorico();
+
+      document.getElementById("query").addEventListener("keydown", function(e) {
+        if (e.key === "Enter") buscarProdutos();
+      });
+    });
+
+    function abrirAba(id, btn) {
+      document.querySelectorAll(".content-section").forEach(sec => sec.classList.remove("active"));
+      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+
+      document.getElementById(id).classList.add("active");
+      btn.classList.add("active");
+
+      if (id === "favoritos") renderFavoritos();
+      if (id === "historico") renderHistorico();
+    }
+
+    function setStatus(msg, type = "") {
+      const status = document.getElementById("status");
+      status.innerHTML = msg;
+      status.className = "status " + type;
+      status.style.display = msg ? "block" : "none";
+    }
+
+    function formatarMoeda(valor) {
+      return Number(valor || 0).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    function limparTexto(txt) {
+      return String(txt || "")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function gerarLinkProduto(permalink) {
+      const parametro = config.affiliateCode || "";
+      if (!parametro) return permalink;
+
+      if (parametro.startsWith("?") || parametro.startsWith("&")) {
+        return permalink + parametro;
+      }
+
+      return permalink + "?" + parametro;
+    }
+
+    function calcularScore(item, menorPreco, maiorVendido) {
+      const preco = Number(item.price || 0);
+      const vendidos = Number(item.sold_quantity || 0);
+      const freteGratis = item.shipping && item.shipping.free_shipping ? 1 : 0;
+      const novo = item.condition === "new" ? 1 : 0;
+
+      const precoScore = menorPreco > 0 ? Math.min(100, (menorPreco / preco) * 100) : 50;
+      const vendidoScore = maiorVendido > 0 ? Math.min(100, (vendidos / maiorVendido) * 100) : 20;
+      const freteScore = freteGratis ? 12 : 0;
+      const novoScore = novo ? 8 : 0;
+
+      return Math.round((precoScore * 0.55) + (vendidoScore * 0.30) + freteScore + novoScore);
+    }
+
+    function ordenarProdutos(produtos, prioridade) {
+      const precos = produtos.map(p => Number(p.price || 0)).filter(p => p > 0);
+      const menorPreco = Math.min(...precos);
+      const maiorVendido = Math.max(...produtos.map(p => Number(p.sold_quantity || 0)), 1);
+
+      produtos = produtos.map(item => ({
+        ...item,
+        scoreIA: calcularScore(item, menorPreco, maiorVendido)
+      }));
+
+      if (prioridade === "barato") {
+        produtos.sort((a, b) => Number(a.price) - Number(b.price));
+      } else if (prioridade === "popular") {
+        produtos.sort((a, b) => Number(b.sold_quantity || 0) - Number(a.sold_quantity || 0));
+      } else if (prioridade === "novo") {
+        produtos = produtos.filter(p => p.condition === "new");
+        produtos.sort((a, b) => Number(b.scoreIA || 0) - Number(a.scoreIA || 0));
+      } else {
+        produtos.sort((a, b) => Number(b.scoreIA || 0) - Number(a.scoreIA || 0));
+      }
+
+      return produtos;
+    }
+
+    async function buscarProdutos() {
+      const query = document.getElementById("query").value.trim();
+      const maxPrice = Number(document.getElementById("maxPrice").value || 0);
+      const priority = document.getElementById("priority").value;
+      const limit = Number(document.getElementById("limit").value || 12);
+
+      if (!query) {
+        setStatus("Digite o nome do produto que você deseja buscar.", "error");
+        return;
+      }
+
+      const searchBtn = document.getElementById("searchBtn");
+      searchBtn.innerHTML = '<span class="loader"></span> Buscando...';
+      searchBtn.disabled = true;
+
+      setStatus("Buscando produtos online. Aguarde...", "");
+      document.getElementById("summary").style.display = "none";
+
+      try {
+        const params = new URLSearchParams();
+        params.set("q", query);
+        params.set("limit", limit);
+        params.set("offset", "0");
+
+        if (maxPrice > 0) {
+          params.set("price", `0-${maxPrice}`);
+        }
+
+        const url = `${API_BASE}?${params.toString()}`;
+        const resp = await fetch(url);
+
+        if (!resp.ok) {
+          throw new Error("Não foi possível consultar os produtos.");
+        }
+
+        const data = await resp.json();
+        let produtos = data.results || [];
+
+        produtos = produtos.filter(p => {
+          if (!p.price || !p.title || !p.permalink) return false;
+          if (maxPrice > 0 && Number(p.price) > maxPrice) return false;
+          return true;
+        });
+
+        produtos = ordenarProdutos(produtos, priority);
+        produtosAtuais = produtos;
+
+        salvarHistorico(query, maxPrice, priority);
+        renderProdutos(produtos);
+        gerarAnaliseIA(produtos, query, maxPrice, priority);
+
+        if (produtos.length) {
+          setStatus(`Busca concluída. Encontramos ${produtos.length} produto(s) para "${query}".`, "ok");
+        } else {
+          setStatus("Nenhum produto encontrado com esses filtros. Tente aumentar o preço máximo ou mudar o termo da busca.", "error");
+        }
+
+      } catch (err) {
+        console.error(err);
+        setStatus("Erro ao buscar produtos. Verifique sua internet ou tente novamente com outro termo.", "error");
+      } finally {
+        searchBtn.innerHTML = "🔎 Buscar melhores produtos";
+        searchBtn.disabled = false;
+      }
+    }
+
+    function renderProdutos(produtos) {
+      const container = document.getElementById("products");
+      const empty = document.getElementById("emptyResults");
+      const count = document.getElementById("count");
+
+      container.innerHTML = "";
+
+      if (!produtos.length) {
+        empty.style.display = "block";
+        count.innerText = "Nenhum produto encontrado";
+        return;
+      }
+
+      empty.style.display = "none";
+      count.innerText = `${produtos.length} resultado(s)`;
+
+      produtos.forEach((item, index) => {
+        const fav = favoritos.some(f => f.id === item.id);
+        const frete = item.shipping && item.shipping.free_shipping ? "Grátis" : "Consultar";
+        const condicao = item.condition === "new" ? "Novo" : "Usado";
+        const vendidos = item.sold_quantity || 0;
+        const link = gerarLinkProduto(item.permalink);
+        const parcelas = item.installments
+          ? `${item.installments.quantity}x de ${formatarMoeda(item.installments.amount)}`
+          : "Parcelamento na loja";
+
+        let selo = "";
+        if (index === 0) selo = "Melhor escolha";
+        else if (item.shipping && item.shipping.free_shipping) selo = "Frete grátis";
+        else if (Number(item.sold_quantity || 0) > 50) selo = "Popular";
+
+        const card = document.createElement("article");
+        card.className = "product-card";
+
+        card.innerHTML = `
+          <div class="rank-badge">#${index + 1}</div>
+          ${selo ? `<div class="tag-best">${selo}</div>` : ""}
+
+          <div class="image-box">
+            <img src="${item.thumbnail || ""}" alt="${limparTexto(item.title)}" loading="lazy">
+          </div>
+
+          <div class="product-body">
+            <h3 class="product-title">${limparTexto(item.title)}</h3>
+
+            <div class="price">${formatarMoeda(item.price)}</div>
+            <div class="installments">${parcelas}</div>
+
+            <div class="meta">
+              <span>Loja <b>Mercado Livre</b></span>
+              <span>Condição <b>${condicao}</b></span>
+              <span>Vendidos <b>${vendidos}</b></span>
+              <span>Frete <b>${frete}</b></span>
+              <span>Estado <b>${item.address && item.address.state_name ? item.address.state_name : "Brasil"}</b></span>
+            </div>
+
+            <div class="score">
+              <b>Nota inteligente:</b> ${item.scoreIA || 0}/100<br>
+              Avaliação calculada por preço, popularidade, frete e condição do produto.
+            </div>
+
+            <div class="card-actions">
+              <a class="btn" href="${link}" target="_blank" rel="noopener noreferrer">Ver oferta</a>
+              <button class="heart ${fav ? "active" : ""}" onclick='toggleFavorito(${JSON.stringify(item).replace(/'/g, "&apos;")})'>♥</button>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function gerarAnaliseIA(produtos, query, maxPrice, priority) {
+      const box = document.getElementById("summary");
+      const text = document.getElementById("summaryText");
+
+      if (!produtos.length) {
+        box.style.display = "none";
+        return;
+      }
+
+      const melhor = produtos[0];
+      const maisBarato = [...produtos].sort((a, b) => Number(a.price) - Number(b.price))[0];
+      const maisVendido = [...produtos].sort((a, b) => Number(b.sold_quantity || 0) - Number(a.sold_quantity || 0))[0];
+
+      let frasePrioridade = "equilíbrio entre preço, popularidade e condição do produto";
+      if (priority === "barato") frasePrioridade = "menor preço";
+      if (priority === "popular") frasePrioridade = "popularidade e quantidade de vendidos";
+      if (priority === "novo") frasePrioridade = "produtos novos";
+
+      const limite = maxPrice > 0 ? ` dentro do limite de ${formatarMoeda(maxPrice)}` : "";
+
+      text.innerHTML = `
+        Para a busca por <b>${limparTexto(query)}</b>${limite}, a melhor opção encontrada foi
+        <b>${limparTexto(melhor.title)}</b>, por apresentar bom resultado considerando ${frasePrioridade}.
+        O produto mais barato da lista é <b>${limparTexto(maisBarato.title)}</b>, por <b>${formatarMoeda(maisBarato.price)}</b>.
+        Já o mais popular é <b>${limparTexto(maisVendido.title)}</b>, com <b>${maisVendido.sold_quantity || 0}</b> vendido(s).
+        Antes de comprar, confira no site da loja a reputação do vendedor, prazo de entrega, garantia e avaliações reais dos compradores.
+      `;
+
+      box.style.display = "block";
+    }
+
+    function salvarHistorico(query, maxPrice, priority) {
+      const item = {
+        query,
+        maxPrice,
+        priority,
+        date: new Date().toLocaleString("pt-BR")
+      };
+
+      historico = historico.filter(h => h.query.toLowerCase() !== query.toLowerCase());
+      historico.unshift(item);
+      historico = historico.slice(0, 20);
+
+      localStorage.setItem("compraCertaHistorico", JSON.stringify(historico));
+      renderHistorico();
+    }
+
+    function renderHistorico() {
+      const list = document.getElementById("historyList");
+      list.innerHTML = "";
+
+      if (!historico.length) {
+        list.innerHTML = `<div class="empty">Nenhuma busca salva ainda.</div>`;
+        return;
+      }
+
+      historico.forEach(h => {
+        const div = document.createElement("div");
+        div.className = "history-item";
+
+        div.innerHTML = `
+          <div>
+            <strong>${limparTexto(h.query)}</strong>
+            <p class="small-text">
+              ${h.maxPrice ? "Até " + formatarMoeda(h.maxPrice) + " · " : ""}
+              ${traduzirPrioridade(h.priority)} · ${h.date}
+            </p>
+          </div>
+          <button onclick='repetirBusca(${JSON.stringify(h).replace(/'/g, "&apos;")})'>Buscar de novo</button>
+        `;
+
+        list.appendChild(div);
+      });
+    }
+
+    function repetirBusca(h) {
+      document.getElementById("query").value = h.query || "";
+      document.getElementById("maxPrice").value = h.maxPrice || "";
+      document.getElementById("priority").value = h.priority || "beneficio";
+
+      document.querySelectorAll(".content-section").forEach(sec => sec.classList.remove("active"));
+      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+
+      document.getElementById("resultados").classList.add("active");
+      document.querySelectorAll(".tab")[0].classList.add("active");
+
+      buscarProdutos();
+    }
+
+    function traduzirPrioridade(p) {
+      const mapa = {
+        beneficio: "Melhor custo-benefício",
+        barato: "Mais barato",
+        popular: "Mais vendido/popular",
+        novo: "Somente produtos novos"
+      };
+
+      return mapa[p] || "Custo-benefício";
+    }
+
+    function toggleFavorito(item) {
+      const existe = favoritos.some(f => f.id === item.id);
+
+      if (existe) {
+        favoritos = favoritos.filter(f => f.id !== item.id);
+      } else {
+        favoritos.unshift({
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          thumbnail: item.thumbnail,
+          permalink: item.permalink,
+          sold_quantity: item.sold_quantity || 0,
+          condition: item.condition,
+          scoreIA: item.scoreIA || 0
+        });
+      }
+
+      localStorage.setItem("compraCertaFavoritos", JSON.stringify(favoritos));
+      renderProdutos(produtosAtuais);
+      renderFavoritos();
+    }
+
+    function renderFavoritos() {
+      const list = document.getElementById("favoriteList");
+      list.innerHTML = "";
+
+      if (!favoritos.length) {
+        list.innerHTML = `<div class="empty">Você ainda não favoritou nenhum produto.</div>`;
+        return;
+      }
+
+      favoritos.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "favorite-item";
+
+        const link = gerarLinkProduto(item.permalink);
+
+        div.innerHTML = `
+          <img src="${item.thumbnail || ""}" alt="${limparTexto(item.title)}">
+          <div class="favorite-info">
+            <h3>${limparTexto(item.title)}</h3>
+            <p>${formatarMoeda(item.price)} · ${item.sold_quantity || 0} vendido(s) · Nota IA ${item.scoreIA || 0}/100</p>
+          </div>
+          <a class="btn" href="${link}" target="_blank" rel="noopener noreferrer">Ver</a>
+          <button class="btn danger" onclick="removerFavorito('${item.id}')">Remover</button>
+        `;
+
+        list.appendChild(div);
+      });
+    }
+
+    function removerFavorito(id) {
+      favoritos = favoritos.filter(f => f.id !== id);
+      localStorage.setItem("compraCertaFavoritos", JSON.stringify(favoritos));
+      renderFavoritos();
+      renderProdutos(produtosAtuais);
+    }
+
+    function limparFavoritos() {
+      favoritos = [];
+      localStorage.setItem("compraCertaFavoritos", JSON.stringify(favoritos));
+      renderFavoritos();
+      renderProdutos(produtosAtuais);
+    }
+
+    function limparHistorico() {
+      historico = [];
+      localStorage.setItem("compraCertaHistorico", JSON.stringify(historico));
+      renderHistorico();
+    }
+
+    function salvarConfig() {
+      config.affiliateCode = document.getElementById("affiliateCode").value.trim();
+      localStorage.setItem("compraCertaConfig", JSON.stringify(config));
+      setStatus("Configuração salva com sucesso.", "ok");
+    }
+
+    function exemploCelular() {
+      document.getElementById("query").value = "celular Samsung";
+      document.getElementById("maxPrice").value = "1500";
+      document.getElementById("priority").value = "beneficio";
+      document.getElementById("limit").value = "12";
+    }
+
+    function limparBusca() {
+      document.getElementById("query").value = "";
+      document.getElementById("maxPrice").value = "";
+      document.getElementById("priority").value = "beneficio";
+      document.getElementById("limit").value = "12";
+      document.getElementById("products").innerHTML = "";
+      document.getElementById("emptyResults").style.display = "block";
+      document.getElementById("count").innerText = "Nenhuma busca feita ainda";
+      document.getElementById("summary").style.display = "none";
+      setStatus("", "");
+      produtosAtuais = [];
+    }
+  </script>
+</body>
+</html>
