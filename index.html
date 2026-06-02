@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Compra Certa IA</title>
 
   <style>
     :root {
-      --bg: #f3f6fb;
+      --azul: #2563eb;
+      --azul-escuro: #1d4ed8;
+      --azul-profundo: #0f172a;
+      --verde: #16a34a;
+      --vermelho: #dc2626;
+      --amarelo: #f59e0b;
+      --fundo: #f4f7fb;
       --card: #ffffff;
-      --text: #162033;
-      --muted: #64748b;
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --success: #16a34a;
-      --warning: #f59e0b;
-      --danger: #dc2626;
-      --border: #dbe3ef;
-      --shadow: 0 14px 40px rgba(15, 23, 42, .10);
-      --radius: 22px;
+      --texto: #111827;
+      --texto-suave: #64748b;
+      --borda: #dbe3ef;
+      --sombra: 0 16px 40px rgba(15, 23, 42, 0.12);
+      --radius: 24px;
     }
 
     * {
@@ -30,10 +32,10 @@
     body {
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, .16), transparent 32%),
-        radial-gradient(circle at top right, rgba(22, 163, 74, .12), transparent 30%),
-        var(--bg);
-      color: var(--text);
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(22, 163, 74, 0.12), transparent 30%),
+        var(--fundo);
+      color: var(--texto);
       min-height: 100vh;
       padding: 18px;
     }
@@ -45,105 +47,118 @@
 
     header {
       background: linear-gradient(135deg, #0f172a, #1d4ed8);
-      border-radius: 28px;
       color: white;
-      padding: 32px 24px;
-      box-shadow: var(--shadow);
+      padding: 34px 26px;
+      border-radius: 30px;
+      box-shadow: var(--sombra);
       position: relative;
       overflow: hidden;
+      margin-bottom: 18px;
     }
 
     header::after {
       content: "";
       position: absolute;
-      width: 260px;
-      height: 260px;
+      width: 280px;
+      height: 280px;
       border-radius: 50%;
-      background: rgba(255,255,255,.10);
       right: -90px;
-      top: -80px;
-    }
-
-    .brand {
-      position: relative;
-      z-index: 2;
+      top: -100px;
+      background: rgba(255, 255, 255, 0.10);
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.22);
-      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      padding: 8px 13px;
       border-radius: 999px;
       font-size: 13px;
+      font-weight: 800;
       margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      font-size: clamp(30px, 5vw, 54px);
+      font-size: clamp(34px, 6vw, 58px);
       line-height: 1;
       margin-bottom: 12px;
       letter-spacing: -1.5px;
+      position: relative;
+      z-index: 2;
     }
 
     header p {
-      max-width: 760px;
-      color: rgba(255,255,255,.86);
+      max-width: 780px;
+      color: rgba(255, 255, 255, 0.88);
       font-size: 17px;
       line-height: 1.55;
+      position: relative;
+      z-index: 2;
     }
 
-    .panel {
+    .painel {
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 1px solid var(--borda);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-top: 18px;
+      box-shadow: var(--sombra);
       padding: 18px;
+      margin-bottom: 18px;
     }
 
-    .search-grid {
+    .grid-busca {
       display: grid;
-      grid-template-columns: 1.6fr .75fr .9fr .8fr;
+      grid-template-columns: 1.6fr .8fr 1fr .7fr;
       gap: 12px;
       align-items: end;
     }
 
     label {
       display: block;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 13px;
       color: #334155;
       margin-bottom: 7px;
     }
 
-    input, select {
+    input,
+    select {
       width: 100%;
-      height: 48px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      height: 50px;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
       padding: 0 14px;
       font-size: 15px;
       background: white;
+      color: var(--texto);
       outline: none;
-      color: var(--text);
     }
 
-    input:focus, select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, .10);
+    input:focus,
+    select:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
     }
 
+    .botoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    button,
     .btn {
-      height: 48px;
-      border: 0;
-      border-radius: 14px;
-      padding: 0 16px;
-      background: var(--primary);
+      min-height: 50px;
+      border: none;
+      border-radius: 16px;
+      padding: 0 18px;
+      background: var(--azul);
       color: white;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 15px;
       cursor: pointer;
       transition: .2s;
@@ -154,307 +169,305 @@
       text-decoration: none;
     }
 
+    button:hover,
     .btn:hover {
-      background: var(--primary-dark);
+      background: var(--azul-escuro);
       transform: translateY(-1px);
     }
 
-    .btn.secondary {
-      background: #e2e8f0;
-      color: #0f172a;
+    button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+      transform: none;
     }
 
-    .btn.secondary:hover {
-      background: #cbd5e1;
+    .btn-sec {
+      background: #e5eaf1;
+      color: #111827;
     }
 
-    .btn.success {
-      background: var(--success);
+    .btn-sec:hover {
+      background: #d7dde7;
     }
 
-    .btn.success:hover {
+    .btn-verde {
+      background: var(--verde);
+    }
+
+    .btn-verde:hover {
       background: #15803d;
     }
 
-    .btn.danger {
+    .btn-danger {
       background: #fee2e2;
       color: #991b1b;
     }
 
-    .btn.danger:hover {
+    .btn-danger:hover {
       background: #fecaca;
     }
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .small-text {
+    .texto-ajuda {
+      margin-top: 12px;
+      color: var(--texto-suave);
       font-size: 13px;
-      color: var(--muted);
-      line-height: 1.45;
-      margin-top: 10px;
+      line-height: 1.5;
     }
 
-    .status {
-      margin-top: 16px;
-      padding: 14px;
-      border-radius: 16px;
+    .aviso {
+      display: none;
+      margin-top: 14px;
+      padding: 15px;
+      border-radius: 18px;
       background: #eff6ff;
       color: #1e40af;
-      font-weight: 700;
-      display: none;
+      font-weight: 800;
+      line-height: 1.45;
     }
 
-    .status.error {
+    .aviso.erro {
       background: #fef2f2;
       color: #991b1b;
     }
 
-    .status.ok {
+    .aviso.ok {
       background: #ecfdf5;
       color: #166534;
     }
 
-    .summary {
-      display: none;
-      margin-top: 18px;
-      background: linear-gradient(135deg, #ecfdf5, #eff6ff);
-      border: 1px solid #bfdbfe;
-      border-radius: 20px;
-      padding: 18px;
-    }
-
-    .summary h2 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .summary p {
-      color: #334155;
-      line-height: 1.55;
-      font-size: 15px;
-    }
-
-    .tabs {
+    .abas {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
+      flex-wrap: wrap;
+      margin: 18px 0;
     }
 
-    .tab {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
+    .aba {
       background: white;
-      font-weight: 800;
-      cursor: pointer;
+      border: 1px solid var(--borda);
       color: #334155;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 900;
+      cursor: pointer;
+      min-height: auto;
     }
 
-    .tab.active {
-      background: var(--primary);
+    .aba.ativa {
+      background: var(--azul);
       color: white;
-      border-color: var(--primary);
+      border-color: var(--azul);
     }
 
-    .content-section {
+    .secao {
       display: none;
     }
 
-    .content-section.active {
+    .secao.ativa {
       display: block;
     }
 
-    .results-header {
+    .topo-resultados {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      margin-top: 20px;
-      margin-bottom: 12px;
       flex-wrap: wrap;
+      margin-bottom: 14px;
     }
 
-    .results-header h2 {
-      font-size: 22px;
+    .topo-resultados h2 {
+      font-size: clamp(25px, 4vw, 34px);
+      letter-spacing: -.5px;
     }
 
-    .count {
-      color: var(--muted);
+    .contador {
+      color: var(--texto-suave);
+      font-weight: 800;
       font-size: 14px;
-      font-weight: 700;
     }
 
-    .products {
+    .analise {
+      display: none;
+      background: linear-gradient(135deg, #ecfdf5, #eff6ff);
+      border: 1px solid #bfdbfe;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .analise h3 {
+      color: #0f172a;
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+
+    .produtos {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .product-card {
+    .produto {
       background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+      border: 1px solid var(--borda);
+      border-radius: 24px;
       overflow: hidden;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, .08);
       display: flex;
       flex-direction: column;
-      min-height: 100%;
       position: relative;
+      min-height: 100%;
     }
 
-    .rank-badge {
+    .ranking {
       position: absolute;
-      left: 12px;
       top: 12px;
-      z-index: 2;
+      left: 12px;
       background: #0f172a;
       color: white;
-      font-weight: 900;
-      font-size: 13px;
-      padding: 8px 10px;
+      padding: 8px 11px;
       border-radius: 999px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.20);
+      font-size: 13px;
+      font-weight: 900;
+      z-index: 2;
+      box-shadow: 0 6px 18px rgba(0,0,0,.20);
     }
 
-    .tag-best {
+    .selo {
       position: absolute;
-      right: 12px;
       top: 12px;
-      z-index: 2;
+      right: 12px;
       background: #fef3c7;
       color: #92400e;
-      font-weight: 900;
-      font-size: 12px;
-      padding: 8px 10px;
+      padding: 8px 11px;
       border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      z-index: 2;
     }
 
-    .image-box {
-      height: 210px;
+    .imagem {
+      height: 220px;
       background: #f8fafc;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 22px;
-      border-bottom: 1px solid var(--border);
+      padding: 25px;
+      border-bottom: 1px solid var(--borda);
     }
 
-    .image-box img {
+    .imagem img {
       max-width: 100%;
-      max-height: 170px;
+      max-height: 175px;
       object-fit: contain;
       mix-blend-mode: multiply;
     }
 
-    .product-body {
+    .corpo {
       padding: 16px;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
-    .product-title {
+    .titulo {
       font-size: 16px;
+      font-weight: 900;
       line-height: 1.35;
-      font-weight: 800;
-      min-height: 64px;
-      color: #0f172a;
+      min-height: 65px;
       margin-bottom: 10px;
+      color: #0f172a;
     }
 
-    .price {
-      font-size: 28px;
+    .preco {
+      font-size: 29px;
       font-weight: 900;
       color: #0f172a;
       margin-bottom: 4px;
     }
 
-    .installments {
-      color: var(--success);
+    .parcelas {
+      color: var(--verde);
       font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 10px;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
     .meta {
       display: grid;
-      gap: 7px;
-      margin: 10px 0 14px;
+      gap: 8px;
+      margin-bottom: 14px;
       font-size: 13px;
       color: #475569;
     }
 
-    .meta span {
+    .meta div {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
-      border-bottom: 1px dashed #e2e8f0;
+      border-bottom: 1px dashed #e5e7eb;
       padding-bottom: 6px;
+      gap: 8px;
     }
 
     .meta b {
-      color: #0f172a;
+      color: #111827;
       text-align: right;
     }
 
-    .score {
+    .nota {
       background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
       padding: 10px;
       font-size: 13px;
-      color: #334155;
       line-height: 1.45;
       margin-bottom: 14px;
+      color: #334155;
     }
 
-    .card-actions {
+    .acoes-card {
       display: grid;
-      grid-template-columns: 1fr 48px;
+      grid-template-columns: 1fr 50px;
       gap: 8px;
       margin-top: auto;
     }
 
     .heart {
-      height: 48px;
-      border: 0;
-      border-radius: 14px;
       background: #f1f5f9;
-      cursor: pointer;
+      color: #111827;
       font-size: 22px;
+      padding: 0;
+      min-height: 50px;
     }
 
-    .heart.active {
+    .heart.ativo {
       background: #fee2e2;
-      color: #dc2626;
+      color: var(--vermelho);
     }
 
-    .empty {
+    .vazio {
       background: white;
-      border: 1px dashed var(--border);
-      border-radius: 20px;
-      padding: 28px;
+      border: 1px dashed var(--borda);
+      border-radius: 22px;
+      padding: 34px;
       text-align: center;
-      color: var(--muted);
-      margin-top: 16px;
+      color: var(--texto-suave);
+      line-height: 1.5;
+      font-size: 16px;
     }
 
-    .history-list, .favorite-list {
+    .lista {
       display: grid;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 12px;
     }
 
-    .history-item, .favorite-item {
+    .item-lista {
       background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      border: 1px solid var(--borda);
+      border-radius: 18px;
       padding: 14px;
       display: flex;
       align-items: center;
@@ -462,66 +475,63 @@
       gap: 12px;
     }
 
-    .history-item button {
-      border: 0;
-      background: #eff6ff;
-      color: #1d4ed8;
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .favorite-item img {
-      width: 56px;
-      height: 56px;
+    .item-lista img {
+      width: 64px;
+      height: 64px;
       object-fit: contain;
       background: #f8fafc;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
     }
 
-    .favorite-info {
+    .item-info {
       flex: 1;
     }
 
-    .favorite-info h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
+    .item-info h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+      line-height: 1.35;
     }
 
-    .favorite-info p {
+    .item-info p {
+      color: var(--texto-suave);
       font-size: 13px;
-      color: var(--muted);
+      line-height: 1.4;
     }
 
-    .loader {
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255,255,255,.45);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
+    .debug-box {
+      margin-top: 14px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 14px;
+      color: #475569;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .debug-box code {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 8px;
+      color: #0f172a;
     }
 
     footer {
       text-align: center;
-      color: var(--muted);
+      color: var(--texto-suave);
       font-size: 13px;
-      margin: 24px 0 8px;
+      margin: 26px 0 8px;
       line-height: 1.5;
     }
 
-    @media (max-width: 950px) {
-      .search-grid {
+    @media (max-width: 930px) {
+      .grid-busca {
         grid-template-columns: 1fr 1fr;
       }
 
-      .products {
+      .produtos {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -532,33 +542,39 @@
       }
 
       header {
-        padding: 26px 18px;
-        border-radius: 22px;
+        padding: 28px 20px;
+        border-radius: 24px;
       }
 
-      .search-grid {
+      .grid-busca {
         grid-template-columns: 1fr;
       }
 
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .actions .btn {
+      .botoes button,
+      .botoes .btn {
         width: 100%;
       }
 
-      .history-item, .favorite-item {
+      .produtos {
+        grid-template-columns: 1fr;
+      }
+
+      .item-lista {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .favorite-item {
-        flex-direction: row;
+      .item-lista img {
+        width: 80px;
+        height: 80px;
       }
 
-      .results-header {
-        align-items: flex-start;
+      .abas {
+        gap: 8px;
+      }
+
+      .aba {
+        padding: 11px 15px;
       }
     }
   </style>
@@ -567,18 +583,16 @@
 <body>
   <div class="app">
     <header>
-      <div class="brand">
-        <div class="badge">🛒 Comparador inteligente de produtos</div>
-        <h1>Compra Certa IA</h1>
-        <p>
-          Digite o produto que deseja comprar, defina o preço máximo e deixe o aplicativo buscar ofertas online,
-          organizar por preço, popularidade e custo-benefício.
-        </p>
-      </div>
+      <div class="badge">🛒 Comparador inteligente de produtos</div>
+      <h1>Compra Certa IA</h1>
+      <p>
+        Digite o produto que deseja comprar, defina o preço máximo e deixe o aplicativo buscar ofertas online,
+        organizar por preço, popularidade e custo-benefício.
+      </p>
     </header>
 
-    <section class="panel">
-      <div class="search-grid">
+    <section class="painel">
+      <div class="grid-busca">
         <div>
           <label for="query">O que você quer comprar?</label>
           <input id="query" type="text" placeholder="Ex: celular Samsung A15, notebook i5, geladeira..." />
@@ -609,191 +623,164 @@
         </div>
       </div>
 
-      <div class="actions">
-        <button class="btn" onclick="buscarProdutos()" id="searchBtn">🔎 Buscar melhores produtos</button>
-        <button class="btn secondary" onclick="exemploCelular()">📱 Exemplo celular</button>
-        <button class="btn secondary" onclick="limparBusca()">🧹 Limpar</button>
+      <div class="botoes">
+        <button id="buscarBtn" onclick="buscarProdutos()">🔎 Buscar melhores produtos</button>
+        <button class="btn-sec" onclick="exemploCelular()">📱 Exemplo celular</button>
+        <button class="btn-sec" onclick="limparBusca()">🧹 Limpar</button>
+        <button class="btn-sec" onclick="testarAPI()">🧪 Testar API</button>
       </div>
 
-      <p class="small-text">
-        Nesta primeira versão, a busca real é feita no Mercado Livre Brasil. Depois dá para integrar Amazon, Shopee,
-        Magalu, AliExpress e links de afiliado.
+      <p class="texto-ajuda">
+        Esta versão usa a rota <b>/api/buscar</b> da Vercel. O arquivo <b>api/buscar.js</b> precisa existir no projeto.
       </p>
 
-      <div id="status" class="status"></div>
-
-      <div id="summary" class="summary">
-        <h2>🤖 Análise da IA</h2>
-        <p id="summaryText"></p>
-      </div>
+      <div id="aviso" class="aviso"></div>
     </section>
 
-    <div class="tabs">
-      <button class="tab active" onclick="abrirAba('resultados', this)">Resultados</button>
-      <button class="tab" onclick="abrirAba('favoritos', this)">Favoritos</button>
-      <button class="tab" onclick="abrirAba('historico', this)">Histórico</button>
-      <button class="tab" onclick="abrirAba('config', this)">Configuração</button>
+    <div class="abas">
+      <button class="aba ativa" onclick="abrirAba('resultados', this)">Resultados</button>
+      <button class="aba" onclick="abrirAba('favoritos', this)">Favoritos</button>
+      <button class="aba" onclick="abrirAba('historico', this)">Histórico</button>
+      <button class="aba" onclick="abrirAba('config', this)">Configuração</button>
     </div>
 
-    <section id="resultados" class="content-section active">
-      <div class="results-header">
+    <section id="resultados" class="secao ativa">
+      <div class="topo-resultados">
         <h2>Produtos encontrados</h2>
-        <div class="count" id="count">Nenhuma busca feita ainda</div>
+        <div id="contador" class="contador">Nenhuma busca feita ainda</div>
       </div>
 
-      <div id="products" class="products"></div>
+      <div id="analise" class="analise"></div>
 
-      <div id="emptyResults" class="empty">
+      <div id="produtos" class="produtos"></div>
+
+      <div id="vazio" class="vazio">
         Digite um produto acima e clique em buscar para encontrar ofertas.
       </div>
     </section>
 
-    <section id="favoritos" class="content-section">
-      <div class="panel">
-        <div class="results-header">
-          <h2>Produtos favoritos</h2>
-          <button class="btn danger" onclick="limparFavoritos()">Limpar favoritos</button>
+    <section id="favoritos" class="secao">
+      <div class="painel">
+        <div class="topo-resultados">
+          <h2>Favoritos</h2>
+          <button class="btn-danger" onclick="limparFavoritos()">Limpar favoritos</button>
         </div>
-        <div id="favoriteList" class="favorite-list"></div>
+
+        <div id="listaFavoritos" class="lista"></div>
       </div>
     </section>
 
-    <section id="historico" class="content-section">
-      <div class="panel">
-        <div class="results-header">
-          <h2>Histórico de buscas</h2>
-          <button class="btn danger" onclick="limparHistorico()">Limpar histórico</button>
+    <section id="historico" class="secao">
+      <div class="painel">
+        <div class="topo-resultados">
+          <h2>Histórico</h2>
+          <button class="btn-danger" onclick="limparHistorico()">Limpar histórico</button>
         </div>
-        <div id="historyList" class="history-list"></div>
+
+        <div id="listaHistorico" class="lista"></div>
       </div>
     </section>
 
-    <section id="config" class="content-section">
-      <div class="panel">
-        <h2>Configuração do app</h2>
-        <p class="small-text">
-          Aqui você pode colocar um código de afiliado ou parâmetro de campanha para adicionar no final dos links.
+    <section id="config" class="secao">
+      <div class="painel">
+        <h2>Configuração</h2>
+
+        <p class="texto-ajuda">
+          Coloque aqui um parâmetro de campanha ou afiliado para acrescentar no final dos links.
           Exemplo: <b>?utm_source=compra_certa_ia</b>
         </p>
 
         <div style="margin-top:14px;">
-          <label for="affiliateCode">Parâmetro para links</label>
-          <input id="affiliateCode" type="text" placeholder="Ex: ?utm_source=compra_certa_ia" />
+          <label for="afiliado">Parâmetro para links</label>
+          <input id="afiliado" type="text" placeholder="Ex: ?utm_source=compra_certa_ia" />
         </div>
 
-        <div class="actions">
-          <button class="btn success" onclick="salvarConfig()">Salvar configuração</button>
+        <div class="botoes">
+          <button class="btn-verde" onclick="salvarConfig()">Salvar configuração</button>
         </div>
 
-        <p class="small-text">
-          Observação: cada loja tem suas próprias regras para afiliados. Em uma versão profissional, o ideal é usar APIs oficiais
-          e links afiliados aprovados por cada plataforma.
-        </p>
+        <div class="debug-box">
+          <b>Conferência importante:</b><br>
+          No GitHub, o projeto precisa estar assim:<br>
+          <code>index.html</code><br>
+          <code>api/buscar.js</code><br><br>
+          O app precisa ser aberto pelo link da <b>Vercel</b>, não pelo GitHub Pages.
+        </div>
       </div>
     </section>
 
     <footer>
-      Compra Certa IA — primeira versão funcional para busca de produtos online.
+      Compra Certa IA — busca inteligente de produtos online.
     </footer>
   </div>
 
   <script>
-    const API_BASE = "https://api.mercadolibre.com/sites/MLB/search";
-
     let produtosAtuais = [];
-    let favoritos = JSON.parse(localStorage.getItem("compraCertaFavoritos") || "[]");
-    let historico = JSON.parse(localStorage.getItem("compraCertaHistorico") || "[]");
-    let config = JSON.parse(localStorage.getItem("compraCertaConfig") || "{}");
+    let favoritos = JSON.parse(localStorage.getItem("ccia_favoritos") || "[]");
+    let historico = JSON.parse(localStorage.getItem("ccia_historico") || "[]");
+    let config = JSON.parse(localStorage.getItem("ccia_config") || "{}");
 
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("affiliateCode").value = config.affiliateCode || "";
+      document.getElementById("afiliado").value = config.afiliado || "";
       renderFavoritos();
       renderHistorico();
 
       document.getElementById("query").addEventListener("keydown", function(e) {
-        if (e.key === "Enter") buscarProdutos();
+        if (e.key === "Enter") {
+          buscarProdutos();
+        }
       });
     });
 
-    function abrirAba(id, btn) {
-      document.querySelectorAll(".content-section").forEach(sec => sec.classList.remove("active"));
-      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+    function abrirAba(id, botao) {
+      document.querySelectorAll(".secao").forEach(secao => {
+        secao.classList.remove("ativa");
+      });
 
-      document.getElementById(id).classList.add("active");
-      btn.classList.add("active");
+      document.querySelectorAll(".aba").forEach(aba => {
+        aba.classList.remove("ativa");
+      });
+
+      document.getElementById(id).classList.add("ativa");
+      botao.classList.add("ativa");
 
       if (id === "favoritos") renderFavoritos();
       if (id === "historico") renderHistorico();
     }
 
-    function setStatus(msg, type = "") {
-      const status = document.getElementById("status");
-      status.innerHTML = msg;
-      status.className = "status " + type;
-      status.style.display = msg ? "block" : "none";
+    function aviso(msg, tipo = "") {
+      const el = document.getElementById("aviso");
+      el.innerHTML = msg;
+      el.className = "aviso " + tipo;
+      el.style.display = msg ? "block" : "none";
     }
 
-    function formatarMoeda(valor) {
+    function dinheiro(valor) {
       return Number(valor || 0).toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL"
       });
     }
 
-    function limparTexto(txt) {
+    function limparHTML(txt) {
       return String(txt || "")
-        .replace(/"/g, "&quot;")
+        .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
-    function gerarLinkProduto(permalink) {
-      const parametro = config.affiliateCode || "";
-      if (!parametro) return permalink;
+    function linkProduto(url) {
+      const extra = config.afiliado || "";
 
-      if (parametro.startsWith("?") || parametro.startsWith("&")) {
-        return permalink + parametro;
+      if (!extra) return url;
+
+      if (extra.startsWith("?") || extra.startsWith("&")) {
+        return url + extra;
       }
 
-      return permalink + "?" + parametro;
-    }
-
-    function calcularScore(item, menorPreco, maiorVendido) {
-      const preco = Number(item.price || 0);
-      const vendidos = Number(item.sold_quantity || 0);
-      const freteGratis = item.shipping && item.shipping.free_shipping ? 1 : 0;
-      const novo = item.condition === "new" ? 1 : 0;
-
-      const precoScore = menorPreco > 0 ? Math.min(100, (menorPreco / preco) * 100) : 50;
-      const vendidoScore = maiorVendido > 0 ? Math.min(100, (vendidos / maiorVendido) * 100) : 20;
-      const freteScore = freteGratis ? 12 : 0;
-      const novoScore = novo ? 8 : 0;
-
-      return Math.round((precoScore * 0.55) + (vendidoScore * 0.30) + freteScore + novoScore);
-    }
-
-    function ordenarProdutos(produtos, prioridade) {
-      const precos = produtos.map(p => Number(p.price || 0)).filter(p => p > 0);
-      const menorPreco = Math.min(...precos);
-      const maiorVendido = Math.max(...produtos.map(p => Number(p.sold_quantity || 0)), 1);
-
-      produtos = produtos.map(item => ({
-        ...item,
-        scoreIA: calcularScore(item, menorPreco, maiorVendido)
-      }));
-
-      if (prioridade === "barato") {
-        produtos.sort((a, b) => Number(a.price) - Number(b.price));
-      } else if (prioridade === "popular") {
-        produtos.sort((a, b) => Number(b.sold_quantity || 0) - Number(a.sold_quantity || 0));
-      } else if (prioridade === "novo") {
-        produtos = produtos.filter(p => p.condition === "new");
-        produtos.sort((a, b) => Number(b.scoreIA || 0) - Number(a.scoreIA || 0));
-      } else {
-        produtos.sort((a, b) => Number(b.scoreIA || 0) - Number(a.scoreIA || 0));
-      }
-
-      return produtos;
+      return url + "?" + extra;
     }
 
     async function buscarProdutos() {
@@ -803,209 +790,336 @@
       const limit = Number(document.getElementById("limit").value || 12);
 
       if (!query) {
-        setStatus("Digite o nome do produto que você deseja buscar.", "error");
+        aviso("Digite o nome do produto que você deseja comprar.", "erro");
         return;
       }
 
-      const searchBtn = document.getElementById("searchBtn");
-      searchBtn.innerHTML = '<span class="loader"></span> Buscando...';
-      searchBtn.disabled = true;
+      const btn = document.getElementById("buscarBtn");
+      btn.disabled = true;
+      btn.innerHTML = "⏳ Buscando...";
 
-      setStatus("Buscando produtos online. Aguarde...", "");
-      document.getElementById("summary").style.display = "none";
+      aviso("Buscando produtos online pela rota /api/buscar. Aguarde...", "");
 
       try {
         const params = new URLSearchParams();
         params.set("q", query);
         params.set("limit", limit);
-        params.set("offset", "0");
+        params.set("priority", priority);
 
         if (maxPrice > 0) {
-          params.set("price", `0-${maxPrice}`);
+          params.set("maxPrice", maxPrice);
         }
 
-        const url = `${API_BASE}?${params.toString()}`;
-        const resp = await fetch(url);
-
-        if (!resp.ok) {
-          throw new Error("Não foi possível consultar os produtos.");
-        }
-
-        const data = await resp.json();
-        let produtos = data.results || [];
-
-        produtos = produtos.filter(p => {
-          if (!p.price || !p.title || !p.permalink) return false;
-          if (maxPrice > 0 && Number(p.price) > maxPrice) return false;
-          return true;
+        const resposta = await fetch("/api/buscar?" + params.toString(), {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          }
         });
 
-        produtos = ordenarProdutos(produtos, priority);
-        produtosAtuais = produtos;
+        let data = null;
 
-        salvarHistorico(query, maxPrice, priority);
-        renderProdutos(produtos);
-        gerarAnaliseIA(produtos, query, maxPrice, priority);
-
-        if (produtos.length) {
-          setStatus(`Busca concluída. Encontramos ${produtos.length} produto(s) para "${query}".`, "ok");
-        } else {
-          setStatus("Nenhum produto encontrado com esses filtros. Tente aumentar o preço máximo ou mudar o termo da busca.", "error");
+        try {
+          data = await resposta.json();
+        } catch (jsonError) {
+          throw new Error("A rota /api/buscar não retornou JSON. Confira se api/buscar.js existe na Vercel.");
         }
 
-      } catch (err) {
-        console.error(err);
-        setStatus("Erro ao buscar produtos. Verifique sua internet ou tente novamente com outro termo.", "error");
+        if (!resposta.ok || !data.ok) {
+          throw new Error(data.message || "Erro ao buscar produtos.");
+        }
+
+        produtosAtuais = Array.isArray(data.products) ? data.products : [];
+
+        salvarHistorico(query, maxPrice, priority);
+        renderProdutos(produtosAtuais);
+        gerarAnalise(query, maxPrice, priority, produtosAtuais);
+
+        if (produtosAtuais.length) {
+          aviso("Busca concluída. Encontramos " + produtosAtuais.length + " produto(s).", "ok");
+        } else {
+          aviso("Nenhum produto encontrado. Tente outro termo ou aumente o preço máximo.", "erro");
+        }
+
+      } catch (e) {
+        console.error(e);
+
+        aviso(
+          "Erro ao buscar produtos. Verifique se existe o arquivo <b>api/buscar.js</b> no GitHub e se a Vercel fez o deploy. Detalhe: " +
+          limparHTML(e.message),
+          "erro"
+        );
       } finally {
-        searchBtn.innerHTML = "🔎 Buscar melhores produtos";
-        searchBtn.disabled = false;
+        btn.disabled = false;
+        btn.innerHTML = "🔎 Buscar melhores produtos";
+      }
+    }
+
+    async function testarAPI() {
+      aviso("Testando a rota /api/buscar...", "");
+
+      try {
+        const resposta = await fetch("/api/buscar?q=celular&limit=3", {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        let texto = await resposta.text();
+
+        if (!resposta.ok) {
+          aviso(
+            "A rota /api/buscar respondeu com erro HTTP " + resposta.status +
+            ". Resposta: " + limparHTML(texto.slice(0, 300)),
+            "erro"
+          );
+          return;
+        }
+
+        let data = null;
+
+        try {
+          data = JSON.parse(texto);
+        } catch (e) {
+          aviso(
+            "A rota /api/buscar existe, mas não retornou JSON válido. Resposta: " +
+            limparHTML(texto.slice(0, 300)),
+            "erro"
+          );
+          return;
+        }
+
+        if (data.ok) {
+          aviso(
+            "API funcionando! A rota /api/buscar retornou " +
+            (data.total || 0) +
+            " produto(s). Agora a busca deve funcionar.",
+            "ok"
+          );
+        } else {
+          aviso(
+            "A API respondeu, mas retornou erro: " +
+            limparHTML(data.message || "Erro desconhecido."),
+            "erro"
+          );
+        }
+
+      } catch (e) {
+        aviso(
+          "Não consegui acessar /api/buscar. Isso geralmente significa que o arquivo api/buscar.js não está na Vercel. Detalhe: " +
+          limparHTML(e.message),
+          "erro"
+        );
       }
     }
 
     function renderProdutos(produtos) {
-      const container = document.getElementById("products");
-      const empty = document.getElementById("emptyResults");
-      const count = document.getElementById("count");
+      const area = document.getElementById("produtos");
+      const vazio = document.getElementById("vazio");
+      const contador = document.getElementById("contador");
 
-      container.innerHTML = "";
+      area.innerHTML = "";
 
       if (!produtos.length) {
-        empty.style.display = "block";
-        count.innerText = "Nenhum produto encontrado";
+        vazio.style.display = "block";
+        contador.innerText = "Nenhum produto encontrado";
         return;
       }
 
-      empty.style.display = "none";
-      count.innerText = `${produtos.length} resultado(s)`;
+      vazio.style.display = "none";
+      contador.innerText = produtos.length + " resultado(s)";
 
-      produtos.forEach((item, index) => {
-        const fav = favoritos.some(f => f.id === item.id);
-        const frete = item.shipping && item.shipping.free_shipping ? "Grátis" : "Consultar";
-        const condicao = item.condition === "new" ? "Novo" : "Usado";
-        const vendidos = item.sold_quantity || 0;
-        const link = gerarLinkProduto(item.permalink);
-        const parcelas = item.installments
-          ? `${item.installments.quantity}x de ${formatarMoeda(item.installments.amount)}`
-          : "Parcelamento na loja";
+      produtos.forEach((p, i) => {
+        const fav = favoritos.some(f => f.id === p.id);
 
         let selo = "";
-        if (index === 0) selo = "Melhor escolha";
-        else if (item.shipping && item.shipping.free_shipping) selo = "Frete grátis";
-        else if (Number(item.sold_quantity || 0) > 50) selo = "Popular";
+        if (i === 0) {
+          selo = "Melhor escolha";
+        } else if (p.free_shipping) {
+          selo = "Frete grátis";
+        } else if ((p.sold_quantity || 0) > 50) {
+          selo = "Popular";
+        }
+
+        const parcelas = p.installments
+          ? p.installments.quantity + "x de " + dinheiro(p.installments.amount)
+          : "Parcelamento na loja";
 
         const card = document.createElement("article");
-        card.className = "product-card";
+        card.className = "produto";
 
         card.innerHTML = `
-          <div class="rank-badge">#${index + 1}</div>
-          ${selo ? `<div class="tag-best">${selo}</div>` : ""}
+          <div class="ranking">#${i + 1}</div>
+          ${selo ? `<div class="selo">${selo}</div>` : ""}
 
-          <div class="image-box">
-            <img src="${item.thumbnail || ""}" alt="${limparTexto(item.title)}" loading="lazy">
+          <div class="imagem">
+            <img src="${limparHTML(p.thumbnail || "")}" alt="${limparHTML(p.title)}" loading="lazy">
           </div>
 
-          <div class="product-body">
-            <h3 class="product-title">${limparTexto(item.title)}</h3>
+          <div class="corpo">
+            <div class="titulo">${limparHTML(p.title)}</div>
 
-            <div class="price">${formatarMoeda(item.price)}</div>
-            <div class="installments">${parcelas}</div>
+            <div class="preco">${dinheiro(p.price)}</div>
+            <div class="parcelas">${limparHTML(parcelas)}</div>
 
             <div class="meta">
-              <span>Loja <b>Mercado Livre</b></span>
-              <span>Condição <b>${condicao}</b></span>
-              <span>Vendidos <b>${vendidos}</b></span>
-              <span>Frete <b>${frete}</b></span>
-              <span>Estado <b>${item.address && item.address.state_name ? item.address.state_name : "Brasil"}</b></span>
+              <div><span>Loja</span><b>Mercado Livre</b></div>
+              <div><span>Condição</span><b>${p.condition === "new" ? "Novo" : "Usado"}</b></div>
+              <div><span>Vendidos</span><b>${p.sold_quantity || 0}</b></div>
+              <div><span>Frete</span><b>${p.free_shipping ? "Grátis" : "Consultar"}</b></div>
+              <div><span>Local</span><b>${limparHTML(p.state_name || "Brasil")}</b></div>
             </div>
 
-            <div class="score">
-              <b>Nota inteligente:</b> ${item.scoreIA || 0}/100<br>
-              Avaliação calculada por preço, popularidade, frete e condição do produto.
+            <div class="nota">
+              <b>Nota inteligente:</b> ${p.score || 0}/100<br>
+              Calculada por preço, popularidade, condição e frete.
             </div>
 
-            <div class="card-actions">
-              <a class="btn" href="${link}" target="_blank" rel="noopener noreferrer">Ver oferta</a>
-              <button class="heart ${fav ? "active" : ""}" onclick='toggleFavorito(${JSON.stringify(item).replace(/'/g, "&apos;")})'>♥</button>
+            <div class="acoes-card">
+              <a class="btn" href="${limparHTML(linkProduto(p.permalink))}" target="_blank" rel="noopener noreferrer">
+                Ver oferta
+              </a>
+              <button class="heart ${fav ? "ativo" : ""}" onclick='favoritar(${JSON.stringify(p).replace(/'/g, "&apos;")})'>
+                ♥
+              </button>
             </div>
           </div>
         `;
 
-        container.appendChild(card);
+        area.appendChild(card);
       });
     }
 
-    function gerarAnaliseIA(produtos, query, maxPrice, priority) {
-      const box = document.getElementById("summary");
-      const text = document.getElementById("summaryText");
+    function gerarAnalise(query, maxPrice, priority, produtos) {
+      const el = document.getElementById("analise");
 
       if (!produtos.length) {
-        box.style.display = "none";
+        el.style.display = "none";
         return;
       }
 
       const melhor = produtos[0];
-      const maisBarato = [...produtos].sort((a, b) => Number(a.price) - Number(b.price))[0];
-      const maisVendido = [...produtos].sort((a, b) => Number(b.sold_quantity || 0) - Number(a.sold_quantity || 0))[0];
+      const maisBarato = [...produtos].sort((a, b) => Number(a.price || 0) - Number(b.price || 0))[0];
+      const maisPopular = [...produtos].sort((a, b) => Number(b.sold_quantity || 0) - Number(a.sold_quantity || 0))[0];
 
-      let frasePrioridade = "equilíbrio entre preço, popularidade e condição do produto";
-      if (priority === "barato") frasePrioridade = "menor preço";
-      if (priority === "popular") frasePrioridade = "popularidade e quantidade de vendidos";
-      if (priority === "novo") frasePrioridade = "produtos novos";
+      let textoPrioridade = "melhor equilíbrio entre preço, popularidade, frete e condição";
+      if (priority === "barato") textoPrioridade = "menor preço";
+      if (priority === "popular") textoPrioridade = "maior popularidade";
+      if (priority === "novo") textoPrioridade = "produtos novos";
 
-      const limite = maxPrice > 0 ? ` dentro do limite de ${formatarMoeda(maxPrice)}` : "";
-
-      text.innerHTML = `
-        Para a busca por <b>${limparTexto(query)}</b>${limite}, a melhor opção encontrada foi
-        <b>${limparTexto(melhor.title)}</b>, por apresentar bom resultado considerando ${frasePrioridade}.
-        O produto mais barato da lista é <b>${limparTexto(maisBarato.title)}</b>, por <b>${formatarMoeda(maisBarato.price)}</b>.
-        Já o mais popular é <b>${limparTexto(maisVendido.title)}</b>, com <b>${maisVendido.sold_quantity || 0}</b> vendido(s).
-        Antes de comprar, confira no site da loja a reputação do vendedor, prazo de entrega, garantia e avaliações reais dos compradores.
+      el.innerHTML = `
+        <h3>🤖 Análise inteligente</h3>
+        <p>
+          Para a busca por <b>${limparHTML(query)}</b>${maxPrice ? " até " + dinheiro(maxPrice) : ""},
+          a melhor opção encontrada foi <b>${limparHTML(melhor.title)}</b>, considerando ${textoPrioridade}.
+          O produto mais barato da lista é <b>${limparHTML(maisBarato.title)}</b>, por <b>${dinheiro(maisBarato.price)}</b>.
+          O mais popular é <b>${limparHTML(maisPopular.title)}</b>, com <b>${maisPopular.sold_quantity || 0}</b> vendido(s).
+          Antes de comprar, confira reputação do vendedor, prazo de entrega, garantia e avaliações dentro da loja.
+        </p>
       `;
 
-      box.style.display = "block";
+      el.style.display = "block";
+    }
+
+    function favoritar(p) {
+      const existe = favoritos.some(f => f.id === p.id);
+
+      if (existe) {
+        favoritos = favoritos.filter(f => f.id !== p.id);
+      } else {
+        favoritos.unshift(p);
+      }
+
+      localStorage.setItem("ccia_favoritos", JSON.stringify(favoritos));
+      renderProdutos(produtosAtuais);
+      renderFavoritos();
+    }
+
+    function renderFavoritos() {
+      const lista = document.getElementById("listaFavoritos");
+      lista.innerHTML = "";
+
+      if (!favoritos.length) {
+        lista.innerHTML = `<div class="vazio">Você ainda não salvou nenhum favorito.</div>`;
+        return;
+      }
+
+      favoritos.forEach(p => {
+        const item = document.createElement("div");
+        item.className = "item-lista";
+
+        item.innerHTML = `
+          <img src="${limparHTML(p.thumbnail || "")}" alt="${limparHTML(p.title)}">
+
+          <div class="item-info">
+            <h3>${limparHTML(p.title)}</h3>
+            <p>${dinheiro(p.price)} · Nota ${p.score || 0}/100</p>
+          </div>
+
+          <a class="btn" href="${limparHTML(linkProduto(p.permalink))}" target="_blank" rel="noopener noreferrer">Ver</a>
+          <button class="btn-danger" onclick="removerFavorito('${limparHTML(p.id)}')">Remover</button>
+        `;
+
+        lista.appendChild(item);
+      });
+    }
+
+    function removerFavorito(id) {
+      favoritos = favoritos.filter(f => f.id !== id);
+      localStorage.setItem("ccia_favoritos", JSON.stringify(favoritos));
+      renderFavoritos();
+      renderProdutos(produtosAtuais);
+    }
+
+    function limparFavoritos() {
+      favoritos = [];
+      localStorage.setItem("ccia_favoritos", JSON.stringify(favoritos));
+      renderFavoritos();
+      renderProdutos(produtosAtuais);
     }
 
     function salvarHistorico(query, maxPrice, priority) {
-      const item = {
+      historico = historico.filter(h => h.query.toLowerCase() !== query.toLowerCase());
+
+      historico.unshift({
         query,
         maxPrice,
         priority,
-        date: new Date().toLocaleString("pt-BR")
-      };
+        data: new Date().toLocaleString("pt-BR")
+      });
 
-      historico = historico.filter(h => h.query.toLowerCase() !== query.toLowerCase());
-      historico.unshift(item);
       historico = historico.slice(0, 20);
 
-      localStorage.setItem("compraCertaHistorico", JSON.stringify(historico));
+      localStorage.setItem("ccia_historico", JSON.stringify(historico));
       renderHistorico();
     }
 
     function renderHistorico() {
-      const list = document.getElementById("historyList");
-      list.innerHTML = "";
+      const lista = document.getElementById("listaHistorico");
+      lista.innerHTML = "";
 
       if (!historico.length) {
-        list.innerHTML = `<div class="empty">Nenhuma busca salva ainda.</div>`;
+        lista.innerHTML = `<div class="vazio">Nenhuma busca no histórico.</div>`;
         return;
       }
 
       historico.forEach(h => {
-        const div = document.createElement("div");
-        div.className = "history-item";
+        const item = document.createElement("div");
+        item.className = "item-lista";
 
-        div.innerHTML = `
-          <div>
-            <strong>${limparTexto(h.query)}</strong>
-            <p class="small-text">
-              ${h.maxPrice ? "Até " + formatarMoeda(h.maxPrice) + " · " : ""}
-              ${traduzirPrioridade(h.priority)} · ${h.date}
-            </p>
+        item.innerHTML = `
+          <div class="item-info">
+            <h3>${limparHTML(h.query)}</h3>
+            <p>${h.maxPrice ? "Até " + dinheiro(h.maxPrice) + " · " : ""}${limparHTML(h.data)}</p>
           </div>
-          <button onclick='repetirBusca(${JSON.stringify(h).replace(/'/g, "&apos;")})'>Buscar de novo</button>
+
+          <button onclick='repetirBusca(${JSON.stringify(h).replace(/'/g, "&apos;")})'>
+            Buscar de novo
+          </button>
         `;
 
-        list.appendChild(div);
+        lista.appendChild(item);
       });
     }
 
@@ -1014,102 +1128,25 @@
       document.getElementById("maxPrice").value = h.maxPrice || "";
       document.getElementById("priority").value = h.priority || "beneficio";
 
-      document.querySelectorAll(".content-section").forEach(sec => sec.classList.remove("active"));
-      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+      document.querySelectorAll(".secao").forEach(s => s.classList.remove("ativa"));
+      document.querySelectorAll(".aba").forEach(a => a.classList.remove("ativa"));
 
-      document.getElementById("resultados").classList.add("active");
-      document.querySelectorAll(".tab")[0].classList.add("active");
+      document.getElementById("resultados").classList.add("ativa");
+      document.querySelectorAll(".aba")[0].classList.add("ativa");
 
       buscarProdutos();
     }
 
-    function traduzirPrioridade(p) {
-      const mapa = {
-        beneficio: "Melhor custo-benefício",
-        barato: "Mais barato",
-        popular: "Mais vendido/popular",
-        novo: "Somente produtos novos"
-      };
-
-      return mapa[p] || "Custo-benefício";
-    }
-
-    function toggleFavorito(item) {
-      const existe = favoritos.some(f => f.id === item.id);
-
-      if (existe) {
-        favoritos = favoritos.filter(f => f.id !== item.id);
-      } else {
-        favoritos.unshift({
-          id: item.id,
-          title: item.title,
-          price: item.price,
-          thumbnail: item.thumbnail,
-          permalink: item.permalink,
-          sold_quantity: item.sold_quantity || 0,
-          condition: item.condition,
-          scoreIA: item.scoreIA || 0
-        });
-      }
-
-      localStorage.setItem("compraCertaFavoritos", JSON.stringify(favoritos));
-      renderProdutos(produtosAtuais);
-      renderFavoritos();
-    }
-
-    function renderFavoritos() {
-      const list = document.getElementById("favoriteList");
-      list.innerHTML = "";
-
-      if (!favoritos.length) {
-        list.innerHTML = `<div class="empty">Você ainda não favoritou nenhum produto.</div>`;
-        return;
-      }
-
-      favoritos.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "favorite-item";
-
-        const link = gerarLinkProduto(item.permalink);
-
-        div.innerHTML = `
-          <img src="${item.thumbnail || ""}" alt="${limparTexto(item.title)}">
-          <div class="favorite-info">
-            <h3>${limparTexto(item.title)}</h3>
-            <p>${formatarMoeda(item.price)} · ${item.sold_quantity || 0} vendido(s) · Nota IA ${item.scoreIA || 0}/100</p>
-          </div>
-          <a class="btn" href="${link}" target="_blank" rel="noopener noreferrer">Ver</a>
-          <button class="btn danger" onclick="removerFavorito('${item.id}')">Remover</button>
-        `;
-
-        list.appendChild(div);
-      });
-    }
-
-    function removerFavorito(id) {
-      favoritos = favoritos.filter(f => f.id !== id);
-      localStorage.setItem("compraCertaFavoritos", JSON.stringify(favoritos));
-      renderFavoritos();
-      renderProdutos(produtosAtuais);
-    }
-
-    function limparFavoritos() {
-      favoritos = [];
-      localStorage.setItem("compraCertaFavoritos", JSON.stringify(favoritos));
-      renderFavoritos();
-      renderProdutos(produtosAtuais);
-    }
-
     function limparHistorico() {
       historico = [];
-      localStorage.setItem("compraCertaHistorico", JSON.stringify(historico));
+      localStorage.setItem("ccia_historico", JSON.stringify(historico));
       renderHistorico();
     }
 
     function salvarConfig() {
-      config.affiliateCode = document.getElementById("affiliateCode").value.trim();
-      localStorage.setItem("compraCertaConfig", JSON.stringify(config));
-      setStatus("Configuração salva com sucesso.", "ok");
+      config.afiliado = document.getElementById("afiliado").value.trim();
+      localStorage.setItem("ccia_config", JSON.stringify(config));
+      aviso("Configuração salva com sucesso.", "ok");
     }
 
     function exemploCelular() {
@@ -1124,12 +1161,15 @@
       document.getElementById("maxPrice").value = "";
       document.getElementById("priority").value = "beneficio";
       document.getElementById("limit").value = "12";
-      document.getElementById("products").innerHTML = "";
-      document.getElementById("emptyResults").style.display = "block";
-      document.getElementById("count").innerText = "Nenhuma busca feita ainda";
-      document.getElementById("summary").style.display = "none";
-      setStatus("", "");
+
       produtosAtuais = [];
+
+      document.getElementById("produtos").innerHTML = "";
+      document.getElementById("contador").innerText = "Nenhuma busca feita ainda";
+      document.getElementById("vazio").style.display = "block";
+      document.getElementById("analise").style.display = "none";
+
+      aviso("", "");
     }
   </script>
 </body>
