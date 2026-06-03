@@ -10,14 +10,12 @@
     :root {
       --azul: #2563eb;
       --azul-escuro: #1d4ed8;
-      --azul-profundo: #0f172a;
       --verde: #16a34a;
       --vermelho: #dc2626;
-      --amarelo: #f59e0b;
       --fundo: #f4f7fb;
       --card: #ffffff;
       --texto: #111827;
-      --texto-suave: #64748b;
+      --suave: #64748b;
       --borda: #dbe3ef;
       --sombra: 0 16px 40px rgba(15, 23, 42, 0.12);
       --radius: 24px;
@@ -175,12 +173,6 @@
       transform: translateY(-1px);
     }
 
-    button:disabled {
-      opacity: .65;
-      cursor: not-allowed;
-      transform: none;
-    }
-
     .btn-sec {
       background: #e5eaf1;
       color: #111827;
@@ -209,7 +201,7 @@
 
     .texto-ajuda {
       margin-top: 12px;
-      color: var(--texto-suave);
+      color: var(--suave);
       font-size: 13px;
       line-height: 1.5;
     }
@@ -282,7 +274,7 @@
     }
 
     .contador {
-      color: var(--texto-suave);
+      color: var(--suave);
       font-weight: 800;
       font-size: 14px;
     }
@@ -304,13 +296,13 @@
       font-size: 21px;
     }
 
-    .produtos {
+    .lojas {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .produto {
+    .loja {
       background: white;
       border: 1px solid var(--borda);
       border-radius: 24px;
@@ -320,9 +312,10 @@
       flex-direction: column;
       position: relative;
       min-height: 100%;
+      padding: 18px;
     }
 
-    .ranking {
+    .rank {
       position: absolute;
       top: 12px;
       left: 12px;
@@ -332,68 +325,44 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 900;
-      z-index: 2;
       box-shadow: 0 6px 18px rgba(0,0,0,.20);
     }
 
     .selo {
-      position: absolute;
-      top: 12px;
-      right: 12px;
+      align-self: flex-end;
       background: #fef3c7;
       color: #92400e;
       padding: 8px 11px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 900;
-      z-index: 2;
+      margin-bottom: 12px;
     }
 
-    .imagem {
-      height: 220px;
-      background: #f8fafc;
+    .icone {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      background: #eff6ff;
+      color: #1d4ed8;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 25px;
-      border-bottom: 1px solid var(--borda);
+      font-size: 34px;
+      margin-top: 16px;
+      margin-bottom: 14px;
     }
 
-    .imagem img {
-      max-width: 100%;
-      max-height: 175px;
-      object-fit: contain;
-      mix-blend-mode: multiply;
+    .loja h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
     }
 
-    .corpo {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .titulo {
-      font-size: 16px;
-      font-weight: 900;
-      line-height: 1.35;
-      min-height: 65px;
-      margin-bottom: 10px;
-      color: #0f172a;
-    }
-
-    .preco {
-      font-size: 29px;
-      font-weight: 900;
-      color: #0f172a;
-      margin-bottom: 4px;
-    }
-
-    .parcelas {
-      color: var(--verde);
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 12px;
+    .loja p {
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 14px;
     }
 
     .meta {
@@ -415,17 +384,6 @@
     .meta b {
       color: #111827;
       text-align: right;
-    }
-
-    .nota {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 10px;
-      font-size: 13px;
-      line-height: 1.45;
-      margin-bottom: 14px;
-      color: #334155;
     }
 
     .acoes-card {
@@ -454,7 +412,7 @@
       border-radius: 22px;
       padding: 34px;
       text-align: center;
-      color: var(--texto-suave);
+      color: var(--suave);
       line-height: 1.5;
       font-size: 16px;
     }
@@ -475,15 +433,6 @@
       gap: 12px;
     }
 
-    .item-lista img {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-      background: #f8fafc;
-      border-radius: 14px;
-      border: 1px solid #e5e7eb;
-    }
-
     .item-info {
       flex: 1;
     }
@@ -495,32 +444,48 @@
     }
 
     .item-info p {
-      color: var(--texto-suave);
+      color: var(--suave);
       font-size: 13px;
       line-height: 1.4;
     }
 
-    .debug-box {
-      margin-top: 14px;
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      padding: 14px;
-      color: #475569;
-      font-size: 13px;
-      line-height: 1.5;
+    .comparar-box {
+      margin-top: 18px;
+      background: #0f172a;
+      color: white;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--sombra);
     }
 
-    .debug-box code {
-      background: #e2e8f0;
-      padding: 2px 6px;
-      border-radius: 8px;
-      color: #0f172a;
+    .comparar-box h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .comparar-box p {
+      color: rgba(255,255,255,.82);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .check {
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 16px;
+      padding: 12px;
+      line-height: 1.45;
     }
 
     footer {
       text-align: center;
-      color: var(--texto-suave);
+      color: var(--suave);
       font-size: 13px;
       margin: 26px 0 8px;
       line-height: 1.5;
@@ -531,7 +496,7 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .produtos {
+      .lojas {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -555,18 +520,13 @@
         width: 100%;
       }
 
-      .produtos {
+      .lojas {
         grid-template-columns: 1fr;
       }
 
       .item-lista {
         align-items: flex-start;
         flex-direction: column;
-      }
-
-      .item-lista img {
-        width: 80px;
-        height: 80px;
       }
 
       .abas {
@@ -583,11 +543,11 @@
 <body>
   <div class="app">
     <header>
-      <div class="badge">🛒 Comparador inteligente de produtos</div>
+      <div class="badge">🛒 Comparador inteligente de compras</div>
       <h1>Compra Certa IA</h1>
       <p>
-        Digite o produto que deseja comprar, defina o preço máximo e deixe o aplicativo buscar ofertas online,
-        organizar por preço, popularidade e custo-benefício.
+        Digite o produto que deseja comprar e o app monta uma busca inteligente nas principais lojas,
+        comparadores e marketplaces para você encontrar o melhor preço.
       </p>
     </header>
 
@@ -595,7 +555,7 @@
       <div class="grid-busca">
         <div>
           <label for="query">O que você quer comprar?</label>
-          <input id="query" type="text" placeholder="Ex: celular Samsung A15, notebook i5, geladeira..." />
+          <input id="query" type="text" placeholder="Ex: celular Poco X7 Pro 512GB, notebook i5, geladeira..." />
         </div>
 
         <div>
@@ -608,30 +568,32 @@
           <select id="priority">
             <option value="beneficio">Melhor custo-benefício</option>
             <option value="barato">Mais barato</option>
-            <option value="popular">Mais vendido/popular</option>
-            <option value="novo">Somente produtos novos</option>
+            <option value="avaliacao">Mais bem avaliado</option>
+            <option value="seguro">Compra mais segura</option>
+            <option value="rapida">Entrega mais rápida</option>
           </select>
         </div>
 
         <div>
-          <label for="limit">Quantidade</label>
-          <select id="limit">
-            <option value="12">12 produtos</option>
-            <option value="24">24 produtos</option>
-            <option value="36">36 produtos</option>
+          <label for="tipo">Tipo de busca</label>
+          <select id="tipo">
+            <option value="todos">Todas as lojas</option>
+            <option value="marketplaces">Marketplaces</option>
+            <option value="comparadores">Comparadores</option>
+            <option value="internacional">Internacional</option>
           </select>
         </div>
       </div>
 
       <div class="botoes">
-        <button id="buscarBtn" onclick="buscarProdutos()">🔎 Buscar melhores produtos</button>
+        <button id="buscarBtn" onclick="buscarLojas()">🔎 Buscar melhores lugares</button>
         <button class="btn-sec" onclick="exemploCelular()">📱 Exemplo celular</button>
         <button class="btn-sec" onclick="limparBusca()">🧹 Limpar</button>
-        <button class="btn-sec" onclick="testarAPI()">🧪 Testar API</button>
+        <button class="btn-verde" onclick="abrirTodos()">🚀 Abrir todos os links</button>
       </div>
 
       <p class="texto-ajuda">
-        Esta versão usa a rota <b>/api/buscar</b> da Vercel. O arquivo <b>api/buscar.js</b> precisa existir no projeto.
+        Esta versão não depende da API bloqueada do Mercado Livre. Ela gera links inteligentes para pesquisar direto nas lojas.
       </p>
 
       <div id="aviso" class="aviso"></div>
@@ -641,21 +603,37 @@
       <button class="aba ativa" onclick="abrirAba('resultados', this)">Resultados</button>
       <button class="aba" onclick="abrirAba('favoritos', this)">Favoritos</button>
       <button class="aba" onclick="abrirAba('historico', this)">Histórico</button>
-      <button class="aba" onclick="abrirAba('config', this)">Configuração</button>
+      <button class="aba" onclick="abrirAba('guia', this)">Guia de compra</button>
     </div>
 
     <section id="resultados" class="secao ativa">
       <div class="topo-resultados">
-        <h2>Produtos encontrados</h2>
+        <h2>Onde pesquisar</h2>
         <div id="contador" class="contador">Nenhuma busca feita ainda</div>
       </div>
 
       <div id="analise" class="analise"></div>
 
-      <div id="produtos" class="produtos"></div>
+      <div id="lojas" class="lojas"></div>
 
       <div id="vazio" class="vazio">
-        Digite um produto acima e clique em buscar para encontrar ofertas.
+        Digite um produto acima e clique em buscar para gerar os links das melhores lojas.
+      </div>
+
+      <div id="compararBox" class="comparar-box" style="display:none;">
+        <h3>🧠 Como escolher a melhor compra</h3>
+        <p>
+          Depois de abrir os links, compare preço final com frete, prazo de entrega, reputação da loja,
+          avaliações reais e garantia. O menor preço nem sempre é a melhor compra.
+        </p>
+
+        <div class="checklist">
+          <div class="check">✅ Confira se o nome do produto é exatamente o mesmo.</div>
+          <div class="check">✅ Veja se a memória, cor, versão e armazenamento estão corretos.</div>
+          <div class="check">✅ Compare o preço com frete incluído.</div>
+          <div class="check">✅ Leia avaliações negativas antes de comprar.</div>
+          <div class="check">✅ Desconfie de preço muito abaixo do normal.</div>
+        </div>
       </div>
     </section>
 
@@ -681,65 +659,142 @@
       </div>
     </section>
 
-    <section id="config" class="secao">
+    <section id="guia" class="secao">
       <div class="painel">
-        <h2>Configuração</h2>
+        <h2>Guia de compra segura</h2>
 
-        <p class="texto-ajuda">
-          Coloque aqui um parâmetro de campanha ou afiliado para acrescentar no final dos links.
-          Exemplo: <b>?utm_source=compra_certa_ia</b>
-        </p>
+        <div class="comparar-box" style="margin-top:16px;">
+          <h3>Antes de comprar, confira isto:</h3>
 
-        <div style="margin-top:14px;">
-          <label for="afiliado">Parâmetro para links</label>
-          <input id="afiliado" type="text" placeholder="Ex: ?utm_source=compra_certa_ia" />
-        </div>
-
-        <div class="botoes">
-          <button class="btn-verde" onclick="salvarConfig()">Salvar configuração</button>
-        </div>
-
-        <div class="debug-box">
-          <b>Conferência importante:</b><br>
-          No GitHub, o projeto precisa estar assim:<br>
-          <code>index.html</code><br>
-          <code>api/buscar.js</code><br><br>
-          O app precisa ser aberto pelo link da <b>Vercel</b>, não pelo GitHub Pages.
+          <div class="checklist">
+            <div class="check">📌 O anúncio precisa ter o nome exato do produto que você pesquisou.</div>
+            <div class="check">📌 Compare preço à vista, parcelado e preço final com frete.</div>
+            <div class="check">📌 Em marketplaces, veja reputação do vendedor.</div>
+            <div class="check">📌 Veja quantidade de avaliações e comentários com foto.</div>
+            <div class="check">📌 Confira garantia, nota fiscal e política de devolução.</div>
+            <div class="check">📌 Em produtos internacionais, veja taxa, prazo e risco de importação.</div>
+          </div>
         </div>
       </div>
     </section>
 
     <footer>
-      Compra Certa IA — busca inteligente de produtos online.
+      Compra Certa IA — encontre onde pesquisar antes de comprar.
     </footer>
   </div>
 
   <script>
-    let produtosAtuais = [];
-    let favoritos = JSON.parse(localStorage.getItem("ccia_favoritos") || "[]");
-    let historico = JSON.parse(localStorage.getItem("ccia_historico") || "[]");
-    let config = JSON.parse(localStorage.getItem("ccia_config") || "{}");
+    let lojasAtuais = [];
+    let favoritos = JSON.parse(localStorage.getItem("ccia_favoritos_links") || "[]");
+    let historico = JSON.parse(localStorage.getItem("ccia_historico_links") || "[]");
+
+    const lojasBase = [
+      {
+        id: "mercadolivre",
+        nome: "Mercado Livre",
+        icone: "🟡",
+        tipo: "marketplaces",
+        selo: "Marketplace forte",
+        descricao: "Bom para comparar vendedores, frete, produtos novos e usados.",
+        prioridade: "Preço, vendedores e frete",
+        url: termo => "https://lista.mercadolivre.com.br/" + encodeURIComponent(termo)
+      },
+      {
+        id: "amazon",
+        nome: "Amazon Brasil",
+        icone: "📦",
+        tipo: "marketplaces",
+        selo: "Compra segura",
+        descricao: "Boa opção para produtos com avaliações, entrega rápida e garantia.",
+        prioridade: "Avaliações e entrega",
+        url: termo => "https://www.amazon.com.br/s?k=" + encodeURIComponent(termo)
+      },
+      {
+        id: "magalu",
+        nome: "Magazine Luiza",
+        icone: "💙",
+        tipo: "marketplaces",
+        selo: "Loja nacional",
+        descricao: "Boa para eletrônicos, eletrodomésticos, celulares e retirada/entrega.",
+        prioridade: "Loja conhecida",
+        url: termo => "https://www.magazineluiza.com.br/busca/" + encodeURIComponent(termo) + "/"
+      },
+      {
+        id: "shopee",
+        nome: "Shopee",
+        icone: "🛍️",
+        tipo: "marketplaces",
+        selo: "Ofertas populares",
+        descricao: "Boa para comparar ofertas baratas, cupons e produtos variados.",
+        prioridade: "Cupons e preço baixo",
+        url: termo => "https://shopee.com.br/search?keyword=" + encodeURIComponent(termo)
+      },
+      {
+        id: "aliexpress",
+        nome: "AliExpress",
+        icone: "🌍",
+        tipo: "internacional",
+        selo: "Internacional",
+        descricao: "Boa para produtos importados, mas exige atenção com prazo e taxas.",
+        prioridade: "Preço internacional",
+        url: termo => "https://pt.aliexpress.com/w/wholesale-" + encodeURIComponent(termo).replaceAll("%20", "-") + ".html"
+      },
+      {
+        id: "casasbahia",
+        nome: "Casas Bahia",
+        icone: "🏬",
+        tipo: "marketplaces",
+        selo: "Loja conhecida",
+        descricao: "Boa para eletrodomésticos, celulares, móveis e produtos parcelados.",
+        prioridade: "Parcelamento",
+        url: termo => "https://www.casasbahia.com.br/" + encodeURIComponent(termo) + "/b"
+      },
+      {
+        id: "google",
+        nome: "Google Shopping",
+        icone: "🔎",
+        tipo: "comparadores",
+        selo: "Comparador amplo",
+        descricao: "Mostra resultados de várias lojas e ajuda a descobrir média de preço.",
+        prioridade: "Comparação geral",
+        url: termo => "https://www.google.com/search?tbm=shop&q=" + encodeURIComponent(termo)
+      },
+      {
+        id: "buscape",
+        nome: "Buscapé",
+        icone: "🧭",
+        tipo: "comparadores",
+        selo: "Comparador",
+        descricao: "Bom para comparar preços e verificar variação entre lojas.",
+        prioridade: "Comparação de preço",
+        url: termo => "https://www.buscape.com.br/search?q=" + encodeURIComponent(termo)
+      },
+      {
+        id: "zoom",
+        nome: "Zoom",
+        icone: "📊",
+        tipo: "comparadores",
+        selo: "Histórico de preço",
+        descricao: "Ajuda a comparar preço e analisar se a oferta está realmente boa.",
+        prioridade: "Histórico e comparação",
+        url: termo => "https://www.zoom.com.br/search?q=" + encodeURIComponent(termo)
+      }
+    ];
 
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("afiliado").value = config.afiliado || "";
       renderFavoritos();
       renderHistorico();
 
       document.getElementById("query").addEventListener("keydown", function(e) {
         if (e.key === "Enter") {
-          buscarProdutos();
+          buscarLojas();
         }
       });
     });
 
     function abrirAba(id, botao) {
-      document.querySelectorAll(".secao").forEach(secao => {
-        secao.classList.remove("ativa");
-      });
-
-      document.querySelectorAll(".aba").forEach(aba => {
-        aba.classList.remove("ativa");
-      });
+      document.querySelectorAll(".secao").forEach(secao => secao.classList.remove("ativa"));
+      document.querySelectorAll(".aba").forEach(aba => aba.classList.remove("ativa"));
 
       document.getElementById(id).classList.add("ativa");
       botao.classList.add("ativa");
@@ -755,13 +810,6 @@
       el.style.display = msg ? "block" : "none";
     }
 
-    function dinheiro(valor) {
-      return Number(valor || 0).toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-      });
-    }
-
     function limparHTML(txt) {
       return String(txt || "")
         .replace(/&/g, "&amp;")
@@ -771,219 +819,126 @@
         .replace(/'/g, "&#039;");
     }
 
-    function linkProduto(url) {
-      const extra = config.afiliado || "";
-
-      if (!extra) return url;
-
-      if (extra.startsWith("?") || extra.startsWith("&")) {
-        return url + extra;
-      }
-
-      return url + "?" + extra;
+    function dinheiro(valor) {
+      if (!valor || Number(valor) <= 0) return "não informado";
+      return Number(valor).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
     }
 
-    async function buscarProdutos() {
-      const query = document.getElementById("query").value.trim();
-      const maxPrice = Number(document.getElementById("maxPrice").value || 0);
-      const priority = document.getElementById("priority").value;
-      const limit = Number(document.getElementById("limit").value || 12);
+    function buscarLojas() {
+      const termo = document.getElementById("query").value.trim();
+      const preco = Number(document.getElementById("maxPrice").value || 0);
+      const prioridade = document.getElementById("priority").value;
+      const tipo = document.getElementById("tipo").value;
 
-      if (!query) {
-        aviso("Digite o nome do produto que você deseja comprar.", "erro");
+      if (!termo) {
+        aviso("Digite o produto que você deseja comprar.", "erro");
         return;
       }
 
-      const btn = document.getElementById("buscarBtn");
-      btn.disabled = true;
-      btn.innerHTML = "⏳ Buscando...";
+      let lojas = [...lojasBase];
 
-      aviso("Buscando produtos online pela rota /api/buscar. Aguarde...", "");
-
-      try {
-        const params = new URLSearchParams();
-        params.set("q", query);
-        params.set("limit", limit);
-        params.set("priority", priority);
-
-        if (maxPrice > 0) {
-          params.set("maxPrice", maxPrice);
-        }
-
-        const resposta = await fetch("/api/buscar?" + params.toString(), {
-          method: "GET",
-          headers: {
-            "Accept": "application/json"
-          }
-        });
-
-        let data = null;
-
-        try {
-          data = await resposta.json();
-        } catch (jsonError) {
-          throw new Error("A rota /api/buscar não retornou JSON. Confira se api/buscar.js existe na Vercel.");
-        }
-
-        if (!resposta.ok || !data.ok) {
-          throw new Error(data.message || "Erro ao buscar produtos.");
-        }
-
-        produtosAtuais = Array.isArray(data.products) ? data.products : [];
-
-        salvarHistorico(query, maxPrice, priority);
-        renderProdutos(produtosAtuais);
-        gerarAnalise(query, maxPrice, priority, produtosAtuais);
-
-        if (produtosAtuais.length) {
-          aviso("Busca concluída. Encontramos " + produtosAtuais.length + " produto(s).", "ok");
-        } else {
-          aviso("Nenhum produto encontrado. Tente outro termo ou aumente o preço máximo.", "erro");
-        }
-
-      } catch (e) {
-        console.error(e);
-
-        aviso(
-          "Erro ao buscar produtos. Verifique se existe o arquivo <b>api/buscar.js</b> no GitHub e se a Vercel fez o deploy. Detalhe: " +
-          limparHTML(e.message),
-          "erro"
-        );
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = "🔎 Buscar melhores produtos";
+      if (tipo !== "todos") {
+        lojas = lojas.filter(l => l.tipo === tipo);
       }
+
+      lojas = ordenarLojas(lojas, prioridade);
+
+      lojasAtuais = lojas.map((loja, index) => {
+        return {
+          ...loja,
+          termo,
+          preco,
+          link: montarLinkComPreco(loja, termo, preco)
+        };
+      });
+
+      renderLojas(lojasAtuais);
+      gerarAnalise(termo, preco, prioridade, tipo, lojasAtuais);
+      salvarHistorico(termo, preco, prioridade, tipo);
+
+      aviso("Busca criada com sucesso. Abra os links das lojas para comparar os preços.", "ok");
     }
 
-    async function testarAPI() {
-      aviso("Testando a rota /api/buscar...", "");
+    function montarLinkComPreco(loja, termo, preco) {
+      let termoFinal = termo;
 
-      try {
-        const resposta = await fetch("/api/buscar?q=celular&limit=3", {
-          method: "GET",
-          headers: {
-            "Accept": "application/json"
-          }
-        });
-
-        let texto = await resposta.text();
-
-        if (!resposta.ok) {
-          aviso(
-            "A rota /api/buscar respondeu com erro HTTP " + resposta.status +
-            ". Resposta: " + limparHTML(texto.slice(0, 300)),
-            "erro"
-          );
-          return;
-        }
-
-        let data = null;
-
-        try {
-          data = JSON.parse(texto);
-        } catch (e) {
-          aviso(
-            "A rota /api/buscar existe, mas não retornou JSON válido. Resposta: " +
-            limparHTML(texto.slice(0, 300)),
-            "erro"
-          );
-          return;
-        }
-
-        if (data.ok) {
-          aviso(
-            "API funcionando! A rota /api/buscar retornou " +
-            (data.total || 0) +
-            " produto(s). Agora a busca deve funcionar.",
-            "ok"
-          );
-        } else {
-          aviso(
-            "A API respondeu, mas retornou erro: " +
-            limparHTML(data.message || "Erro desconhecido."),
-            "erro"
-          );
-        }
-
-      } catch (e) {
-        aviso(
-          "Não consegui acessar /api/buscar. Isso geralmente significa que o arquivo api/buscar.js não está na Vercel. Detalhe: " +
-          limparHTML(e.message),
-          "erro"
-        );
+      if (preco > 0) {
+        termoFinal = termo + " até " + preco;
       }
+
+      if (loja.id === "google") {
+        return loja.url(termoFinal);
+      }
+
+      return loja.url(termo);
     }
 
-    function renderProdutos(produtos) {
-      const area = document.getElementById("produtos");
+    function ordenarLojas(lojas, prioridade) {
+      const ordem = {
+        beneficio: ["google", "buscape", "zoom", "mercadolivre", "amazon", "magalu", "shopee", "casasbahia", "aliexpress"],
+        barato: ["google", "buscape", "zoom", "shopee", "mercadolivre", "aliexpress", "amazon", "magalu", "casasbahia"],
+        avaliacao: ["amazon", "mercadolivre", "google", "magalu", "buscape", "zoom", "casasbahia", "shopee", "aliexpress"],
+        seguro: ["amazon", "magalu", "casasbahia", "mercadolivre", "google", "buscape", "zoom", "shopee", "aliexpress"],
+        rapida: ["amazon", "mercadolivre", "magalu", "casasbahia", "shopee", "google", "buscape", "zoom", "aliexpress"]
+      };
+
+      const lista = ordem[prioridade] || ordem.beneficio;
+
+      return lojas.sort((a, b) => {
+        return lista.indexOf(a.id) - lista.indexOf(b.id);
+      });
+    }
+
+    function renderLojas(lojas) {
+      const area = document.getElementById("lojas");
       const vazio = document.getElementById("vazio");
       const contador = document.getElementById("contador");
+      const compararBox = document.getElementById("compararBox");
 
       area.innerHTML = "";
 
-      if (!produtos.length) {
+      if (!lojas.length) {
         vazio.style.display = "block";
-        contador.innerText = "Nenhum produto encontrado";
+        compararBox.style.display = "none";
+        contador.innerText = "Nenhum resultado";
         return;
       }
 
       vazio.style.display = "none";
-      contador.innerText = produtos.length + " resultado(s)";
+      compararBox.style.display = "block";
+      contador.innerText = lojas.length + " lugar(es) para pesquisar";
 
-      produtos.forEach((p, i) => {
-        const fav = favoritos.some(f => f.id === p.id);
-
-        let selo = "";
-        if (i === 0) {
-          selo = "Melhor escolha";
-        } else if (p.free_shipping) {
-          selo = "Frete grátis";
-        } else if ((p.sold_quantity || 0) > 50) {
-          selo = "Popular";
-        }
-
-        const parcelas = p.installments
-          ? p.installments.quantity + "x de " + dinheiro(p.installments.amount)
-          : "Parcelamento na loja";
+      lojas.forEach((loja, i) => {
+        const fav = favoritos.some(f => f.id === loja.id && f.termo === loja.termo);
 
         const card = document.createElement("article");
-        card.className = "produto";
+        card.className = "loja";
 
         card.innerHTML = `
-          <div class="ranking">#${i + 1}</div>
-          ${selo ? `<div class="selo">${selo}</div>` : ""}
+          <div class="rank">#${i + 1}</div>
+          <div class="selo">${limparHTML(loja.selo)}</div>
 
-          <div class="imagem">
-            <img src="${limparHTML(p.thumbnail || "")}" alt="${limparHTML(p.title)}" loading="lazy">
+          <div class="icone">${loja.icone}</div>
+
+          <h3>${limparHTML(loja.nome)}</h3>
+          <p>${limparHTML(loja.descricao)}</p>
+
+          <div class="meta">
+            <div><span>Produto</span><b>${limparHTML(loja.termo)}</b></div>
+            <div><span>Preço máximo</span><b>${dinheiro(loja.preco)}</b></div>
+            <div><span>Melhor uso</span><b>${limparHTML(loja.prioridade)}</b></div>
           </div>
 
-          <div class="corpo">
-            <div class="titulo">${limparHTML(p.title)}</div>
-
-            <div class="preco">${dinheiro(p.price)}</div>
-            <div class="parcelas">${limparHTML(parcelas)}</div>
-
-            <div class="meta">
-              <div><span>Loja</span><b>Mercado Livre</b></div>
-              <div><span>Condição</span><b>${p.condition === "new" ? "Novo" : "Usado"}</b></div>
-              <div><span>Vendidos</span><b>${p.sold_quantity || 0}</b></div>
-              <div><span>Frete</span><b>${p.free_shipping ? "Grátis" : "Consultar"}</b></div>
-              <div><span>Local</span><b>${limparHTML(p.state_name || "Brasil")}</b></div>
-            </div>
-
-            <div class="nota">
-              <b>Nota inteligente:</b> ${p.score || 0}/100<br>
-              Calculada por preço, popularidade, condição e frete.
-            </div>
-
-            <div class="acoes-card">
-              <a class="btn" href="${limparHTML(linkProduto(p.permalink))}" target="_blank" rel="noopener noreferrer">
-                Ver oferta
-              </a>
-              <button class="heart ${fav ? "ativo" : ""}" onclick='favoritar(${JSON.stringify(p).replace(/'/g, "&apos;")})'>
-                ♥
-              </button>
-            </div>
+          <div class="acoes-card">
+            <a class="btn" href="${limparHTML(loja.link)}" target="_blank" rel="noopener noreferrer">
+              Abrir busca
+            </a>
+            <button class="heart ${fav ? "ativo" : ""}" onclick='favoritar(${JSON.stringify(loja).replace(/'/g, "&apos;")})'>
+              ♥
+            </button>
           </div>
         `;
 
@@ -991,48 +946,57 @@
       });
     }
 
-    function gerarAnalise(query, maxPrice, priority, produtos) {
+    function gerarAnalise(termo, preco, prioridade, tipo, lojas) {
       const el = document.getElementById("analise");
 
-      if (!produtos.length) {
-        el.style.display = "none";
-        return;
-      }
+      let textoPrioridade = "melhor custo-benefício";
+      if (prioridade === "barato") textoPrioridade = "menor preço";
+      if (prioridade === "avaliacao") textoPrioridade = "melhores avaliações";
+      if (prioridade === "seguro") textoPrioridade = "compra mais segura";
+      if (prioridade === "rapida") textoPrioridade = "entrega mais rápida";
 
-      const melhor = produtos[0];
-      const maisBarato = [...produtos].sort((a, b) => Number(a.price || 0) - Number(b.price || 0))[0];
-      const maisPopular = [...produtos].sort((a, b) => Number(b.sold_quantity || 0) - Number(a.sold_quantity || 0))[0];
-
-      let textoPrioridade = "melhor equilíbrio entre preço, popularidade, frete e condição";
-      if (priority === "barato") textoPrioridade = "menor preço";
-      if (priority === "popular") textoPrioridade = "maior popularidade";
-      if (priority === "novo") textoPrioridade = "produtos novos";
+      const primeira = lojas[0];
 
       el.innerHTML = `
         <h3>🤖 Análise inteligente</h3>
         <p>
-          Para a busca por <b>${limparHTML(query)}</b>${maxPrice ? " até " + dinheiro(maxPrice) : ""},
-          a melhor opção encontrada foi <b>${limparHTML(melhor.title)}</b>, considerando ${textoPrioridade}.
-          O produto mais barato da lista é <b>${limparHTML(maisBarato.title)}</b>, por <b>${dinheiro(maisBarato.price)}</b>.
-          O mais popular é <b>${limparHTML(maisPopular.title)}</b>, com <b>${maisPopular.sold_quantity || 0}</b> vendido(s).
-          Antes de comprar, confira reputação do vendedor, prazo de entrega, garantia e avaliações dentro da loja.
+          Para comprar <b>${limparHTML(termo)}</b>${preco ? " até <b>" + dinheiro(preco) + "</b>" : ""},
+          comece pesquisando em <b>${limparHTML(primeira.nome)}</b>, porque essa opção combina melhor com
+          sua prioridade: <b>${limparHTML(textoPrioridade)}</b>.
+          Depois compare também nos outros links, principalmente em comparadores como Google Shopping, Buscapé e Zoom.
+          A melhor compra será aquela que tiver bom preço, loja confiável, frete justo, garantia e avaliações reais.
         </p>
       `;
 
       el.style.display = "block";
     }
 
-    function favoritar(p) {
-      const existe = favoritos.some(f => f.id === p.id);
-
-      if (existe) {
-        favoritos = favoritos.filter(f => f.id !== p.id);
-      } else {
-        favoritos.unshift(p);
+    function abrirTodos() {
+      if (!lojasAtuais.length) {
+        aviso("Faça uma busca primeiro para gerar os links.", "erro");
+        return;
       }
 
-      localStorage.setItem("ccia_favoritos", JSON.stringify(favoritos));
-      renderProdutos(produtosAtuais);
+      lojasAtuais.forEach((loja, index) => {
+        setTimeout(() => {
+          window.open(loja.link, "_blank", "noopener,noreferrer");
+        }, index * 350);
+      });
+
+      aviso("Abrindo os links. Se o navegador bloquear, permita pop-ups para este site.", "ok");
+    }
+
+    function favoritar(loja) {
+      const existe = favoritos.some(f => f.id === loja.id && f.termo === loja.termo);
+
+      if (existe) {
+        favoritos = favoritos.filter(f => !(f.id === loja.id && f.termo === loja.termo));
+      } else {
+        favoritos.unshift(loja);
+      }
+
+      localStorage.setItem("ccia_favoritos_links", JSON.stringify(favoritos));
+      renderLojas(lojasAtuais);
       renderFavoritos();
     }
 
@@ -1045,53 +1009,52 @@
         return;
       }
 
-      favoritos.forEach(p => {
+      favoritos.forEach(f => {
         const item = document.createElement("div");
         item.className = "item-lista";
 
         item.innerHTML = `
-          <img src="${limparHTML(p.thumbnail || "")}" alt="${limparHTML(p.title)}">
-
           <div class="item-info">
-            <h3>${limparHTML(p.title)}</h3>
-            <p>${dinheiro(p.price)} · Nota ${p.score || 0}/100</p>
+            <h3>${limparHTML(f.nome)} — ${limparHTML(f.termo)}</h3>
+            <p>${limparHTML(f.descricao)} · Preço máximo: ${dinheiro(f.preco)}</p>
           </div>
 
-          <a class="btn" href="${limparHTML(linkProduto(p.permalink))}" target="_blank" rel="noopener noreferrer">Ver</a>
-          <button class="btn-danger" onclick="removerFavorito('${limparHTML(p.id)}')">Remover</button>
+          <a class="btn" href="${limparHTML(f.link)}" target="_blank" rel="noopener noreferrer">Abrir</a>
+          <button class="btn-danger" onclick="removerFavorito('${limparHTML(f.id)}','${limparHTML(f.termo)}')">Remover</button>
         `;
 
         lista.appendChild(item);
       });
     }
 
-    function removerFavorito(id) {
-      favoritos = favoritos.filter(f => f.id !== id);
-      localStorage.setItem("ccia_favoritos", JSON.stringify(favoritos));
+    function removerFavorito(id, termo) {
+      favoritos = favoritos.filter(f => !(f.id === id && f.termo === termo));
+      localStorage.setItem("ccia_favoritos_links", JSON.stringify(favoritos));
       renderFavoritos();
-      renderProdutos(produtosAtuais);
+      renderLojas(lojasAtuais);
     }
 
     function limparFavoritos() {
       favoritos = [];
-      localStorage.setItem("ccia_favoritos", JSON.stringify(favoritos));
+      localStorage.setItem("ccia_favoritos_links", JSON.stringify(favoritos));
       renderFavoritos();
-      renderProdutos(produtosAtuais);
+      renderLojas(lojasAtuais);
     }
 
-    function salvarHistorico(query, maxPrice, priority) {
-      historico = historico.filter(h => h.query.toLowerCase() !== query.toLowerCase());
+    function salvarHistorico(termo, preco, prioridade, tipo) {
+      historico = historico.filter(h => h.termo.toLowerCase() !== termo.toLowerCase());
 
       historico.unshift({
-        query,
-        maxPrice,
-        priority,
+        termo,
+        preco,
+        prioridade,
+        tipo,
         data: new Date().toLocaleString("pt-BR")
       });
 
       historico = historico.slice(0, 20);
 
-      localStorage.setItem("ccia_historico", JSON.stringify(historico));
+      localStorage.setItem("ccia_historico_links", JSON.stringify(historico));
       renderHistorico();
     }
 
@@ -1110,8 +1073,8 @@
 
         item.innerHTML = `
           <div class="item-info">
-            <h3>${limparHTML(h.query)}</h3>
-            <p>${h.maxPrice ? "Até " + dinheiro(h.maxPrice) + " · " : ""}${limparHTML(h.data)}</p>
+            <h3>${limparHTML(h.termo)}</h3>
+            <p>${h.preco ? "Até " + dinheiro(h.preco) + " · " : ""}${limparHTML(h.data)}</p>
           </div>
 
           <button onclick='repetirBusca(${JSON.stringify(h).replace(/'/g, "&apos;")})'>
@@ -1124,9 +1087,10 @@
     }
 
     function repetirBusca(h) {
-      document.getElementById("query").value = h.query || "";
-      document.getElementById("maxPrice").value = h.maxPrice || "";
-      document.getElementById("priority").value = h.priority || "beneficio";
+      document.getElementById("query").value = h.termo || "";
+      document.getElementById("maxPrice").value = h.preco || "";
+      document.getElementById("priority").value = h.prioridade || "beneficio";
+      document.getElementById("tipo").value = h.tipo || "todos";
 
       document.querySelectorAll(".secao").forEach(s => s.classList.remove("ativa"));
       document.querySelectorAll(".aba").forEach(a => a.classList.remove("ativa"));
@@ -1134,40 +1098,35 @@
       document.getElementById("resultados").classList.add("ativa");
       document.querySelectorAll(".aba")[0].classList.add("ativa");
 
-      buscarProdutos();
+      buscarLojas();
     }
 
     function limparHistorico() {
       historico = [];
-      localStorage.setItem("ccia_historico", JSON.stringify(historico));
+      localStorage.setItem("ccia_historico_links", JSON.stringify(historico));
       renderHistorico();
     }
 
-    function salvarConfig() {
-      config.afiliado = document.getElementById("afiliado").value.trim();
-      localStorage.setItem("ccia_config", JSON.stringify(config));
-      aviso("Configuração salva com sucesso.", "ok");
-    }
-
     function exemploCelular() {
-      document.getElementById("query").value = "celular Samsung";
-      document.getElementById("maxPrice").value = "1500";
+      document.getElementById("query").value = "Poco X7 Pro 512GB";
+      document.getElementById("maxPrice").value = "2500";
       document.getElementById("priority").value = "beneficio";
-      document.getElementById("limit").value = "12";
+      document.getElementById("tipo").value = "todos";
     }
 
     function limparBusca() {
       document.getElementById("query").value = "";
       document.getElementById("maxPrice").value = "";
       document.getElementById("priority").value = "beneficio";
-      document.getElementById("limit").value = "12";
+      document.getElementById("tipo").value = "todos";
 
-      produtosAtuais = [];
+      lojasAtuais = [];
 
-      document.getElementById("produtos").innerHTML = "";
+      document.getElementById("lojas").innerHTML = "";
       document.getElementById("contador").innerText = "Nenhuma busca feita ainda";
       document.getElementById("vazio").style.display = "block";
       document.getElementById("analise").style.display = "none";
+      document.getElementById("compararBox").style.display = "none";
 
       aviso("", "");
     }
